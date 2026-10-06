@@ -1,0 +1,416 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#075E46">
+  <meta name="description" content="Helping you understand your credit protection options and take the next step with confidence.">
+  <title>Pratik — Credit Protection</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:wght@400;500&family=Poppins:wght@400;500;600;700&family=Sora:wght@400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* Palette: Primary #075E46 · Secondary #E8FFF2 */
+      --color-primary: #075E46;
+      --color-secondary: #E8FFF2;
+
+      /* Transparent liquid-glass navigation */
+      --color-nav-bg: rgba(232, 255, 242, 0.35);
+      --color-nav-border: rgba(255, 255, 255, 0.55);
+      --color-nav-highlight: rgba(255, 255, 255, 0.7);
+      --color-shadow: rgba(0, 0, 0, 0.35);
+      --font-script: 'Great Vibes', cursive;
+      --font-sans: 'Poppins', 'Helvetica Neue', Arial, sans-serif;
+
+      --hero-text: var(--color-secondary);
+      --button-text: var(--color-primary);
+      --content-width: 1300px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html { min-width: 320px; }
+
+    body {
+      min-width: 320px;
+      margin: 0;
+      background: #000;
+      color: var(--color-secondary);
+      font-family: Inter, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    /* === NAVIGATION — transparent liquid glass === */
+    .site-header {
+      position: absolute;
+      z-index: 10;
+      top: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: fade-in-nav 0.8s ease-out both;
+    }
+
+    .nav-pill {
+      display: flex;
+      width: max-content;
+      max-width: calc(100vw - 48px);
+      min-height: 58px;
+      align-items: center;
+      gap: 36px;
+      padding: 0 34px;
+      border: 1px solid var(--color-nav-border);
+      border-radius: 9999px;
+      background: var(--color-nav-bg);
+      box-shadow:
+        inset 0 1px 0 var(--color-nav-highlight),
+        inset 0 -1px 0 rgba(7, 94, 70, 0.12),
+        0 8px 24px var(--color-shadow);
+      font-family: var(--font-sans);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
+      backdrop-filter: blur(24px) saturate(180%);
+    }
+
+    .nav-logo {
+      flex: 0 0 auto;
+      color: var(--color-primary);
+      font-family: var(--font-script);
+      font-size: 26px;
+      line-height: 1;
+      text-decoration: none;
+      /* Optical centering: script fonts carry empty descender space below the
+         baseline, so a mathematically centered box renders the glyph too high. */
+      transform: translateY(0.1em);   /* ≈2.6px at 26px — tune between 0.05em and 0.15em */
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--color-primary);
+      font-size: 12.5px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      opacity: 0.95;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: opacity 180ms ease, text-shadow 180ms ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      opacity: 1;
+      text-shadow: 0 0 8px rgba(7, 94, 70, 0.4);
+    }
+
+    /* === HERO === */
+    .hero {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      min-height: 100vh;
+      min-height: 100dvh;
+      color: var(--hero-text);
+      background: #02251C;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: radial-gradient(
+        ellipse 154% 90% at 50.5% .85%,
+        #fff 23%, #E8FFF2 28.4%, #D0F9E7 33.3%,
+        #96EED2 40.3%, #4BD0A4 46.6%, #17A077 53%,
+        #075E46 60.7%, #054936 66.3%, #02251C 72.7%, #000 89.9%
+      );
+    }
+
+    .hero__inner {
+      position: relative;
+      width: min(var(--content-width), calc(100% - 60px));
+      min-height: inherit;
+      margin-inline: auto;
+    }
+
+    .hero__intro {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 15px;
+      width: 364px;
+      margin-left: 80px;
+      padding-top: 300px;
+    }
+
+    .hero__role {
+      margin: 0;
+      font-family: Sora, sans-serif;
+      font-size: 26px;
+      font-weight: 400;
+      line-height: 1.32;
+      text-wrap: balance;
+    }
+
+    .hero__description {
+      margin: 0;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.5;
+      text-wrap: pretty;
+    }
+
+    .hero__button {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      min-width: 158px;
+      min-height: 52px;
+      padding: 13px 23px;
+      border: 1px solid var(--hero-text);
+      border-radius: 999px;
+      background: var(--hero-text);
+      color: var(--button-text);
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 24px;
+      text-decoration: none;
+      transition: background .2s, color .2s;
+    }
+
+    .hero__button:hover {
+      background: var(--button-text);
+      color: var(--hero-text);
+    }
+    .hero__button:focus-visible { outline: 3px solid var(--color-secondary); outline-offset: 5px; }
+
+    .hero__visual { position: absolute; inset: 0; pointer-events: none; }
+
+    .hero__name {
+      position: absolute;
+      z-index: 1;
+      left: 50%;
+      bottom: 80px;
+      transform: translateX(-50%);
+      margin: 0;
+      width: 1193px;
+      color: var(--hero-text);
+      font-family: Sora, sans-serif;
+      font-size: 250px;
+      font-weight: 400;
+      line-height: .9;
+      letter-spacing: .19em;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    /* F7.png is a tall 528×1936 transparent cutout: keep its natural aspect
+       and anchor it to the bottom instead of cover-cropping it. */
+    .hero__portrait {
+      position: absolute;
+      z-index: 3;
+      left: 50%;
+      bottom: 0;
+      transform: translateX(-50%);
+      display: block;
+      height: 94%;
+      width: auto;
+    }
+
+    /* Tablet: keep the introduction aligned with the visible P. */
+    @media (min-width: 810px) and (max-width: 1359.98px) {
+      .hero__intro { width: 300px; margin-left: 96px; padding-top: 180px; }
+      .hero__role { font-size: 24px; }
+      .hero__name { bottom: 60px; font-size: 120px; }
+    }
+
+    /* Short desktop viewports: keep the whole hero inside the first screen. */
+    @media (min-width: 1360px) and (max-height: 740px) {
+      .hero__intro { padding-top: 150px; }
+      .hero__name { bottom: 56px; font-size: 170px; }
+    }
+
+    /* Mobile: portrait/name first, credit protection content below.
+       The hero fills exactly one viewport; the visual flexes into the slack. */
+    @media (max-width: 809.98px) {
+      .hero { display: flex; flex-direction: column; padding: 150px 20px 40px; }
+      .hero::before {
+        background: radial-gradient(
+          ellipse 150% 30% at 50.5% .85%,
+          #fff 23%, #E8FFF2 28.4%, #D0F9E7 33.3%,
+          #96EED2 40.3%, #4BD0A4 46.6%, #17A077 53%,
+          #075E46 60.7%, #054936 66.3%, #02251C 72.7%, #000 89.9%
+        );
+      }
+      .hero__inner {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        width: 100%;
+        flex: 1 1 auto;
+        min-height: 0;
+      }
+      .hero__visual {
+        position: relative;
+        inset: auto;
+        order: 0;
+        width: 100%;
+        flex: 1 1 auto;
+        min-height: 0;
+      }
+      .hero__portrait { width: auto; height: 100%; }
+      .hero__name {
+        top: 57%;
+        bottom: auto;
+        width: 100%;
+        font-size: calc((100vw - 40px) / 5.5);
+        line-height: 1;
+      }
+      .hero__intro {
+        order: 1;
+        width: 100%;
+        margin-left: 0;
+        padding-top: 0;
+      }
+      .hero__role { font-size: 22px; text-wrap: initial; }
+      .hero__button { min-width: 0; }
+    }
+
+    /* === NAVIGATION RESPONSIVE === */
+    @media (max-width: 1024px) {
+      .nav-pill { gap: 22px; padding: 0 24px; }
+      .nav-links { gap: 20px; }
+    }
+
+    @media (max-width: 768px) {
+      .site-header { top: 20px; left: 16px; transform: none; width: calc(100% - 32px); animation-name: fade-in-up; }
+      .nav-pill { width: 100%; min-height: 54px; gap: 16px; padding: 0 18px; }
+      .nav-links { min-width: 0; overflow-x: auto; gap: 12px; scrollbar-width: none; white-space: nowrap; }
+      .nav-links::-webkit-scrollbar { display: none; }
+      .nav-links a { font-size: 11px; }
+    }
+
+    @media (max-width: 380px) {
+      .nav-pill { gap: 13px; padding: 0 14px; }
+      .nav-links { gap: 10px; }
+    }
+
+    /* === KEYFRAMES === */
+    @keyframes fade-in-nav {
+      from { opacity: 0; transform: translate(-50%, 16px); }
+      to   { opacity: 1; transform: translate(-50%, 0); }
+    }
+
+    @keyframes fade-in-up {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* JS adds this class only after the content is ready to animate. */
+    .hero.is-entering .hero__intro { animation: intro-in .65s ease both; }
+    .hero.is-entering .hero__portrait { animation: portrait-in .8s ease both; }
+    @keyframes intro-in {
+      from { opacity: 0; translate: 0 16px; }
+      to { opacity: 1; translate: 0 0; }
+    }
+    @keyframes portrait-in {
+      from { opacity: 0; translate: 0 24px; }
+      to { opacity: 1; translate: 0 0; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .hero.is-entering .hero__intro,
+      .hero.is-entering .hero__portrait { animation: none; }
+      .hero__button { transition: none; }
+      .site-header { animation: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav-pill" aria-label="Main navigation">
+      <a class="nav-logo" href="#home" aria-label="Pratik home">P.</a>
+      <ul class="nav-links">
+        <li><a href="#work">Work</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home" aria-labelledby="hero-name">
+      <div class="hero__inner">
+        <div class="hero__visual">
+          <h1 class="hero__name" id="hero-name">PRATIK</h1>
+          <img
+            class="hero__portrait"
+            src="F7.png"
+            alt="Pratik, Credit Protection Representative"
+            width="528"
+            height="1936"
+            fetchpriority="high"
+            decoding="async"
+          >
+        </div>
+        <div class="hero__intro">
+          <h2 class="hero__role">Credit Protection Representative</h2>
+          <p class="hero__description">Helping you understand your credit protection options and take the next step with confidence.</p>
+          <!-- Replace /contact with your own contact page, email, or booking URL. -->
+          <a class="hero__button" href="/contact">Let’s talk</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    (() => {
+      const hero = document.querySelector('.hero');
+      const name = document.querySelector('.hero__name');
+      const visual = document.querySelector('.hero__visual');
+      const mobile = window.matchMedia('(max-width: 809.98px)');
+      const canvas = document.createElement('canvas');
+      const context = canvas.getContext('2d');
+
+      // Fit the name to the available mobile width, including letter spacing.
+      function fitMobileName() {
+        if (!mobile.matches) {
+          name.style.removeProperty('font-size');
+          return;
+        }
+        if (!context) return;
+        context.font = '400 100px Sora';
+        const text = name.textContent.trim();
+        const glyphWidth = context.measureText(text).width / 100;
+        const spacingWidth = text.length * 0.19;
+        const availableWidth = visual.clientWidth;
+        name.style.fontSize = (availableWidth / (glyphWidth + spacingWidth)) + 'px';
+      }
+
+      fitMobileName();
+      if ('ResizeObserver' in window) {
+        new ResizeObserver(fitMobileName).observe(visual);
+      } else {
+        window.addEventListener('resize', fitMobileName, { passive: true });
+      }
+      if (document.fonts) document.fonts.ready.then(fitMobileName);
+      mobile.addEventListener('change', fitMobileName);
+
+      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        requestAnimationFrame(() => hero.classList.add('is-entering'));
+      }
+    })();
+  </script>
+</body>
+</html>
