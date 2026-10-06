@@ -1,595 +1,128 @@
-<!doctype html>
+<!DOCTYPE html>
+<!--
+HOME PAGE — STANDALONE RECREATION
+Save this entire file as index.html and open it in a modern browser.
+Contains HTML + CSS + JavaScript for Desktop, Tablet and Phone.
+No npm, bundler, React, Framer runtime, or libraries required.
+External image, font and CV URLs need an internet connection.
+Animations: page fade; scroll-driven portrait reveal; header fade;
+word/line stagger; experience-title blur; on-view card fades; footer rise;
+status glow/core loop; mobile-menu transitions; link/award hover; smooth anchors.
+Framer spring timing is approximated using browser-native easing.
+Existing project copy and links are retained, including the Max Becker signature.
+This is a recreation, not a byte-for-byte Framer export.
+-->
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#075E46">
-  <meta name="description" content="Helping you understand your credit protection options and take the next step with confidence.">
-  <title>Pratik — Credit Protection</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:wght@400;500&family=Poppins:wght@400;500;600;700&family=Sora:wght@400&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      /* Palette: Primary #075E46 · Secondary #E8FFF2 */
-      --color-primary: #075E46;
-      --color-secondary: #E8FFF2;
-
-      /* Transparent liquid-glass navigation */
-      --color-nav-bg: rgba(232, 255, 242, 0.35);
-      --color-nav-border: rgba(255, 255, 255, 0.55);
-      --color-nav-highlight: rgba(255, 255, 255, 0.7);
-      --color-shadow: rgba(0, 0, 0, 0.35);
-      --font-script: 'Great Vibes', cursive;
-      --font-sans: 'Poppins', 'Helvetica Neue', Arial, sans-serif;
-
-      --hero-text: var(--color-secondary);
-      --button-text: var(--color-primary);
-      --content-width: 1300px;
-    }
-
-    *, *::before, *::after { box-sizing: border-box; }
-
-    html { min-width: 320px; }
-
-    body {
-      min-width: 320px;
-      margin: 0;
-      background: #000;
-      color: var(--color-secondary);
-      font-family: Inter, sans-serif;
-      -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
-    }
-
-    /* === NAVIGATION — transparent liquid glass === */
-    .site-header {
-      position: absolute;
-      z-index: 10;
-      top: 24px;
-      left: 50%;
-      transform: translateX(-50%);
-      animation: fade-in-nav 0.8s ease-out both;
-    }
-
-    .nav-pill {
-      display: flex;
-      width: max-content;
-      max-width: calc(100vw - 48px);
-      min-height: 58px;
-      align-items: center;
-      gap: 36px;
-      padding: 0 34px;
-      border: 1px solid var(--color-nav-border);
-      border-radius: 9999px;
-      background: var(--color-nav-bg);
-      box-shadow:
-        inset 0 1px 0 var(--color-nav-highlight),
-        inset 0 -1px 0 rgba(7, 94, 70, 0.12),
-        0 8px 24px var(--color-shadow);
-      font-family: var(--font-sans);
-      -webkit-backdrop-filter: blur(24px) saturate(180%);
-      backdrop-filter: blur(24px) saturate(180%);
-    }
-
-    .nav-toggle { display: none; }
-
-    .nav-logo {
-      flex: 0 0 auto;
-      color: var(--color-primary);
-      font-family: var(--font-script);
-      font-size: 26px;
-      line-height: 1;
-      text-decoration: none;
-      /* Optical centering: script fonts carry empty descender space below the
-         baseline, so a mathematically centered box renders the glyph too high. */
-      transform: translateY(0.1em);   /* ≈2.6px at 26px — tune between 0.05em and 0.15em */
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 28px;
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
-
-    .nav-links a {
-      color: var(--color-primary);
-      font-size: 12.5px;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      opacity: 0.95;
-      text-decoration: none;
-      text-transform: uppercase;
-      transition: opacity 180ms ease, text-shadow 180ms ease;
-    }
-
-    .nav-links a:hover,
-    .nav-links a:focus-visible {
-      opacity: 1;
-      text-shadow: 0 0 8px rgba(7, 94, 70, 0.4);
-    }
-
-    /* === HERO === */
-    .hero {
-      position: relative;
-      isolation: isolate;
-      overflow: hidden;
-      min-height: 100vh;
-      min-height: 100dvh;
-      color: var(--hero-text);
-      background: #E8FFF2;
-      background: linear-gradient(180deg, rgba(232, 255, 242, 1) 0%, rgba(87, 199, 133, 1) 50%, rgba(7, 94, 70, 1) 100%);
-    }
-
-    .hero__inner {
-      position: relative;
-      width: min(var(--content-width), calc(100% - 60px));
-      min-height: inherit;
-      margin-inline: auto;
-    }
-
-    .hero__intro {
-      position: relative;
-      z-index: 2;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 15px;
-      width: 364px;
-      margin-left: 80px;
-      padding-top: 300px;
-      transform: translateY(10%);
-    }
-
-    .hero__role {
-      margin: 0;
-      font-family: Sora, sans-serif;
-      font-size: 26px;
-      font-weight: 400;
-      line-height: 1.32;
-      text-wrap: balance;
-    }
-
-    .hero__details { display: contents; }
-
-    .hero__description {
-      margin: 0;
-      font-size: 16px;
-      font-weight: 400;
-      line-height: 1.5;
-      text-wrap: pretty;
-    }
-
-    .hero__button {
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-      min-width: 158px;
-      min-height: 52px;
-      padding: 13px 23px;
-      border: 1px solid var(--hero-text);
-      border-radius: 999px;
-      background: var(--hero-text);
-      color: var(--button-text);
-      font-size: 16px;
-      font-weight: 500;
-      line-height: 24px;
-      text-decoration: none;
-      transition: background .2s, color .2s;
-    }
-
-    .hero__button:hover {
-      background: var(--button-text);
-      color: var(--hero-text);
-    }
-    .hero__button:focus-visible { outline: 3px solid var(--color-secondary); outline-offset: 5px; }
-
-    .hero__visual { position: absolute; inset: 0; pointer-events: none; }
-
-    .hero__name {
-      position: absolute;
-      z-index: 1;
-      left: 50%;
-      bottom: 80px;
-      transform: translate(-50%, -5%);
-      margin: 0;
-      width: 1193px;
-      color: var(--hero-text);
-      font-family: Sora, sans-serif;
-      font-size: 250px;
-      font-weight: 400;
-      line-height: .9;
-      letter-spacing: .19em;
-      text-align: center;
-      white-space: nowrap;
-    }
-
-    /* F7.png is a tall 528×1936 transparent cutout: keep its natural aspect
-       and anchor it to the bottom instead of cover-cropping it. */
-    .hero__portrait {
-      position: absolute;
-      z-index: 3;
-      left: 50%;
-      bottom: 0;
-      transform: translateX(-50%);
-      display: block;
-      height: 94%;
-      width: auto;
-    }
-
-    /* Desktop and tablet: flank the centered portrait with the intro copy. */
-    @media (min-width: 810px) {
-      .hero__intro {
-        --hero-side-gap: clamp(110px, min(16vw, 18vh), 190px);
-        position: absolute;
-        inset: 0;
-        display: block;
-        width: auto;
-        margin: 0;
-        padding: 0;
-        transform: none;
-      }
-      .hero__details {
-        position: absolute;
-        top: 22%;
-        right: calc(50% + var(--hero-side-gap));
-        left: auto;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 15px;
-        text-align: center;
-        width: min(364px, calc(50% - var(--hero-side-gap) - 16px));
-        height: clamp(180px, 30vh, 300px);
-        padding: 24px;
-        border: 0;
-        border-radius: 24px;
-        color: var(--color-primary);
-        background: rgba(232, 255, 242, 0.58);
-        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 16px 40px rgba(0, 0, 0, 0.12);
-        -webkit-backdrop-filter: blur(32px) saturate(180%);
-        backdrop-filter: blur(32px) saturate(180%);
-      }
-      .hero__details--right {
-        right: auto;
-        left: calc(50% + var(--hero-side-gap));
-      }
-      .hero__details--right .hero__description { text-align: left; }
-      .hero__details .hero__button {
-        border: 0;
-        background: rgba(232, 255, 242, 0.2);
-        color: var(--color-primary);
-        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.24);
-        -webkit-backdrop-filter: blur(12px) saturate(160%);
-        backdrop-filter: blur(12px) saturate(160%);
-      }
-      .hero__details .hero__button:hover {
-        background: rgba(232, 255, 242, 0.3);
-        color: var(--color-primary);
-      }
-    }
-
-    /* Tablet: keep the introduction aligned with the visible P. */
-    @media (min-width: 810px) and (max-width: 1359.98px) {
-      .hero__role { font-size: 24px; }
-      .hero__name { bottom: 60px; font-size: 120px; }
-    }
-
-    /* Short desktop viewports: keep the whole hero inside the first screen. */
-    @media (min-width: 1360px) and (max-height: 740px) {
-      .hero__name { bottom: 56px; font-size: 170px; }
-    }
-
-    /* Mobile: portrait/name first, credit protection content below.
-       The hero fills at least one viewport and can scroll on short screens. */
-    @media (max-width: 809.98px) {
-      .hero {
-        display: flex;
-        flex-direction: column;
-        overflow: visible;
-        padding: 112px 16px 24px;
-        padding: max(112px, calc(env(safe-area-inset-top) + 82px)) 16px max(24px, env(safe-area-inset-bottom));
-      }
-      .hero__inner {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-        gap: clamp(16px, 4vh, 30px);
-        width: 100%;
-        flex: 1 0 auto;
-        min-height: 0;
-      }
-      .hero__visual {
-        position: relative;
-        inset: auto;
-        order: 0;
-        width: 100%;
-        flex: 1 1 auto;
-        min-height: 140px;
-        min-height: clamp(140px, 24vh, 190px);
-      }
-      .hero__portrait { width: auto; height: 100%; }
-      .hero__name {
-        top: 57%;
-        bottom: auto;
-        width: 100%;
-        font-size: calc((100vw - 40px) / 5.5);
-        line-height: 1;
-      }
-      .hero__intro {
-        order: 1;
-        width: 100%;
-        margin-left: 0;
-        padding-top: 0;
-      }
-      .hero__intro {
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-        padding: 24px;
-        border: 0;
-        border-radius: 24px;
-        color: var(--color-primary);
-        background: rgba(232, 255, 242, 0.58);
-        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 16px 40px rgba(0, 0, 0, 0.12);
-        -webkit-backdrop-filter: blur(32px) saturate(180%);
-        backdrop-filter: blur(32px) saturate(180%);
-      }
-      .hero__details,
-      .hero__details--right { display: contents; }
-      .hero__role {
-        font-size: 22px;
-        font-size: clamp(18px, 5.6vw, 22px);
-        text-wrap: initial;
-      }
-      .hero__button { min-width: 0; }
-    }
-
-    /* === NAVIGATION RESPONSIVE === */
-    @media (max-width: 1024px) {
-      .nav-pill { gap: 22px; padding: 0 24px; }
-      .nav-links { gap: 20px; }
-    }
-
-    @media (max-width: 809.98px) {
-      .site-header {
-        top: 20px;
-        top: max(20px, env(safe-area-inset-top));
-        right: 16px;
-        right: max(16px, env(safe-area-inset-right));
-        left: 16px;
-        left: max(16px, env(safe-area-inset-left));
-        transform: none;
-        width: auto;
-        animation-name: fade-in-up;
-      }
-      .nav-pill {
-        display: grid;
-        grid-template-columns: minmax(0, 1fr) auto;
-        width: 100%;
-        min-height: 54px;
-        gap: 0 12px;
-        padding: 0 12px 0 18px;
-        border-radius: 28px;
-        transition: border-radius 260ms ease;
-      }
-      .nav-logo { align-self: center; }
-      .nav-toggle {
-        display: inline-flex;
-        width: 44px;
-        height: 44px;
-        flex: 0 0 auto;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 4px;
-        padding: 0;
-        border: 0;
-        border-radius: 50%;
-        background: rgba(232, 255, 242, 0.52);
-        color: var(--color-primary);
-        cursor: pointer;
-        -webkit-tap-highlight-color: transparent;
-      }
-      .nav-toggle:focus-visible { outline: 3px solid var(--color-primary); outline-offset: 2px; }
-      .nav-toggle__line {
-        display: block;
-        width: 20px;
-        height: 2px;
-        border-radius: 2px;
-        background: currentColor;
-        transition: transform 260ms cubic-bezier(.2, .8, .2, 1), opacity 180ms ease;
-      }
-      .nav-toggle[aria-expanded="true"] .nav-toggle__line:first-child { transform: translateY(6px) rotate(45deg); }
-      .nav-toggle[aria-expanded="true"] .nav-toggle__line:nth-child(2) { opacity: 0; }
-      .nav-toggle[aria-expanded="true"] .nav-toggle__line:last-child { transform: translateY(-6px) rotate(-45deg); }
-      .nav-links {
-        grid-column: 1 / -1;
-        display: grid;
-        gap: 0;
-        min-width: 0;
-        max-height: 0;
-        margin: 0;
-        overflow: hidden;
-        opacity: 0;
-        visibility: hidden;
-        transform: translateY(-8px);
-        transition: max-height 320ms cubic-bezier(.2, .8, .2, 1), opacity 200ms ease, transform 260ms ease, visibility 0s linear 320ms;
-        list-style: none;
-      }
-      .nav-pill.is-open .nav-links {
-        max-height: 360px;
-        padding-block: 8px 12px;
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(0);
-        transition: max-height 320ms cubic-bezier(.2, .8, .2, 1), opacity 200ms ease, transform 260ms ease, visibility 0s;
-      }
-      .nav-links a {
-        display: block;
-        min-height: 44px;
-        padding: 13px 8px;
-        border-top: 1px solid rgba(7, 94, 70, 0.12);
-        font-size: 12px;
-        line-height: 18px;
-      }
-    }
-
-    @media (max-width: 380px) {
-      .nav-pill { padding-right: 10px; padding-left: 14px; }
-      .nav-toggle { width: 42px; height: 42px; }
-    }
-
-    /* === KEYFRAMES === */
-    @keyframes fade-in-nav {
-      from { opacity: 0; transform: translate(-50%, 16px); }
-      to   { opacity: 1; transform: translate(-50%, 0); }
-    }
-
-    @keyframes fade-in-up {
-      from { opacity: 0; transform: translateY(16px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    /* JS adds this class only after the content is ready to animate. */
-    .hero.is-entering .hero__intro { animation: intro-in .65s ease both; }
-    .hero.is-entering .hero__portrait { animation: portrait-in .8s ease both; }
-    @keyframes intro-in {
-      from { opacity: 0; translate: 0 16px; }
-      to { opacity: 1; translate: 0 0; }
-    }
-    @keyframes portrait-in {
-      from { opacity: 0; translate: 0 24px; }
-      to { opacity: 1; translate: 0 0; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      .nav-pill,
-      .nav-toggle__line,
-      .nav-links { transition: none; }
-      .hero.is-entering .hero__intro,
-      .hero.is-entering .hero__portrait { animation: none; }
-      .hero__button { transition: none; }
-      .site-header { animation: none; }
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>Pratik Ambaliya — Senior Software Engineer</title>
+<meta name="description" content="Senior Software Engineer based in Los Angeles. 10+ years of experience building thoughtful digital products. Open to side projects.">
+<link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
+<link rel="preconnect" href="https://framerusercontent.com">
+<style>
+/* Desktop: >=1280px; Tablet: 810–1279px; Phone: <=809px.
+   CSS and JS are embedded; image/font/PDF URLs still require internet access.
+   Framer spring curves are approximated with CSS easing/Web Animations. */
+@font-face{font-family:Switzer;src:url('https://cdn.fontshare.com/wf/BLNB4FAQFNK56DWWNF7PMGTCOTZHOEII/ST3WKSSDMBK2MIQQO3MAVYWLF4FTOLFV/6IN5WOLRCYP4G4MOCOHOMXNON6Q7MDAR.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:Switzer;src:url('https://cdn.fontshare.com/wf/5SZVFDB7V52TI6ULVC6J3WQZQCIZVDV5/ODYPSTCUDMKSTYIPTV4CLQ7URIK7XYBJ/YS3VPNVO4B3TOJMEXDGFZQ4TLZGGSRZC.woff2') format('woff2');font-weight:600;font-style:normal;font-display:swap}
+@font-face{font-family:Switzer;src:url('https://cdn.fontshare.com/wf/HBNTRIISA5MEXGL5WPYI7CV2HIWTDV3Q/YDPDINVT673XLXNSTMLG4JNCZZMVVNPN/Y7SCNZJOT2MW5ADSGOFLDGH4TNL4JCQY.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap}
+:root{--background:#000;--foreground:#fff;--muted:#949494;--accent:#00ffae;--status:#eaff00;--border:#949494;--max-width:1440px;--gutter:64px;--content-width:67%;--title-size:32px;--ease:cubic-bezier(.22,1,.36,1)}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:100px}body{margin:0;background:var(--background);color:var(--foreground);font-family:Switzer,Inter,Arial,sans-serif;font-size:16px;line-height:1.2;overflow-x:hidden}p,h1,h2,h3,blockquote{margin:0}a{color:inherit;text-decoration:none;transition:color .3s cubic-bezier(.44,0,.56,1)}a:hover{color:var(--accent)}a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:6px}button{font:inherit;color:inherit;cursor:pointer}img{display:block;max-width:100%}::selection{background:var(--accent);color:#000}.skip-link{position:fixed;top:-80px;left:16px;padding:12px 16px;z-index:100;background:#000}.skip-link:focus{top:16px}.muted{color:var(--muted)}.page-shell{position:relative;max-width:var(--max-width);margin:0 auto;isolation:isolate}
+/* Portrait starts showing its upper half, then fits fully at the right on scroll. */
+.portrait-stage{position:fixed;inset:0;max-width:var(--max-width);margin:0 auto;z-index:3;overflow:hidden;pointer-events:none}.portrait{position:absolute;left:50%;top:0;width:54.5455vh;height:200vh;transform:translateX(-50%);will-change:width,height,left,top,transform}.portrait img{width:100%;height:100%;max-width:none;object-fit:contain;object-position:center;transform-origin:top center}
+@keyframes page-enter{from{opacity:0}to{opacity:1}}body{animation:page-enter .2s cubic-bezier(.27,0,.51,1) both}
+/* Header and work-status loop. Only the visible controls receive pointer events. */
+.site-header{position:fixed;inset:0 0 auto;max-width:var(--max-width);margin:0 auto;padding:32px var(--gutter);z-index:20;pointer-events:none;animation:header-enter 1s var(--ease) .8s both}.header-row{display:flex;justify-content:space-between;align-items:flex-start;gap:24px}.brand{display:flex;gap:8px;align-items:flex-start;pointer-events:auto;font-weight:600}.identity{white-space:nowrap}.work-status{display:inline-flex;gap:8px;align-items:center;color:var(--status);white-space:nowrap}.status-dot{position:relative;display:block;width:12px;height:12px;flex-shrink:0}.status-dot::before,.status-dot::after{content:'';position:absolute;border-radius:50%;background:var(--status)}.status-dot::before{inset:0;opacity:.6;box-shadow:0 0 24px 4px var(--status);animation:status-glow 1.5s cubic-bezier(.44,0,.56,1) infinite}.status-dot::after{width:8px;height:8px;left:2px;top:2px;animation:status-core 1.5s cubic-bezier(.44,0,.56,1) infinite}@keyframes status-glow{from{opacity:.6;transform:rotate(0)}to{opacity:.1;transform:rotate(360deg)}}@keyframes status-core{from{transform:scale(1) rotate(0)}to{transform:scale(.6) rotate(360deg)}}@keyframes header-enter{from{opacity:0}to{opacity:1}}
+.header-actions{width:25%;display:flex;justify-content:space-between;gap:16px;font-weight:600;pointer-events:auto}.header-links{display:flex;flex-direction:column;gap:10px}.timezone{white-space:nowrap}.menu-toggle{display:none;pointer-events:auto;border:0;background:transparent;padding:0;font-weight:600}.mobile-panel{display:none}.scroll-control{position:fixed;bottom:32px;left:calc(50% + (min(100vw,1440px) - 2 * var(--gutter)) * .25);z-index:15;border:0;padding:0;background:transparent;font-weight:600;animation:header-enter 1s var(--ease) .8s both}.scroll-control:hover{color:var(--accent)}
+/* Hero proportions and auto-fitted display lettering. */
+.hero{position:relative;min-height:100svh;height:100svh;padding:0 var(--gutter) 32px;display:flex;align-items:flex-end;justify-content:space-between;gap:24px}.hero-main{width:var(--content-width);display:flex;flex-direction:column;gap:32px}.experience-stat{color:var(--accent);font-size:32px;font-weight:700;line-height:1;letter-spacing:-.03em}.hero-title{position:relative;z-index:1;font-size:clamp(48px,11vw,160px);line-height:.9;text-align:right;text-transform:uppercase;font-weight:700;letter-spacing:0;width:100%;transform-origin:center}.hero-title span,.footer-title span{display:block;white-space:nowrap}.hero-role{font-weight:600}.hero-quote{position:absolute;top:23.46%;right:var(--gutter);width:calc((100% - 2 * var(--gutter)) * .25);font-weight:700;text-transform:uppercase;text-align:justify;line-height:1.2}
+/* Content: two columns desktop; left half of viewport on tablet. */
+.information{padding-top:220px}.section{padding:0 var(--gutter) 120px;scroll-margin-top:100px}.section-inner{width:var(--content-width);border-top:.5px solid var(--border);padding-top:24px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:start;position:relative}.section h2{font-size:var(--title-size);font-weight:700;line-height:1;text-transform:uppercase;position:sticky;top:80px}.section-body{min-width:0}.section-body p{overflow-wrap:anywhere;text-wrap:pretty}h3{font-size:24px;line-height:1.2;font-weight:700}.entries{display:flex;flex-direction:column;gap:80px}.entry h3{margin-top:16px}.description{margin-top:40px}.skills{display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start}.skill{border:1px solid var(--border);border-radius:8px;padding:4px 12px;white-space:nowrap}.languages{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}.language-card{padding:16px;border:1px solid var(--border);border-bottom-width:2px;border-radius:12px;display:flex;flex-direction:column;gap:32px}.reference-person{display:flex;gap:24px;align-items:center;margin-bottom:32px}.reference-person img{width:56px;height:56px;object-fit:cover;border-radius:12px;flex-shrink:0}.reference-person h3{margin-bottom:8px}.awards{display:flex;flex-direction:column;gap:24px}.award{display:block;padding:16px 16px 17px;border:1px solid var(--border);border-bottom-width:2px;border-radius:12px;transition:border-color .2s var(--ease),color .4s cubic-bezier(.44,0,.56,1)}.award:hover,.award:focus-visible{border-color:var(--accent)}.award-heading{display:flex;gap:10px;justify-content:space-between;align-items:start}.arrow{flex:0 0 20px;margin-top:2px}.award .muted{margin-top:32px}.publication .muted{margin-top:16px}.contact-list{display:flex;flex-direction:column;gap:40px}.contact-item>.muted{margin-bottom:16px}.contact-link,.social-links a{font-size:24px;font-weight:700;line-height:1.2;overflow-wrap:anywhere}.social-links{display:flex;flex-direction:column;gap:12px}.visitor-message{display:flex;flex-direction:column;gap:40px}.signature-group{padding:64px 0 16px;display:flex;flex-direction:column;gap:40px}.signature-crop{position:relative;width:176px;height:85px;overflow:hidden}.signature-crop img{position:absolute;width:1264px;height:605px;max-width:none;left:-674px;top:-374px}.signature-name{font-weight:600}.site-footer{padding:160px var(--gutter) 32px}.footer-title{width:var(--content-width);font-size:clamp(48px,10.8vw,160px);font-weight:700;line-height:.9;text-transform:uppercase;letter-spacing:0}
+/* Reveal defaults stay visible when scripting is unavailable. */
+.js .reveal{opacity:0;transition:opacity 1s var(--ease)}.js .reveal.is-visible{opacity:1}.js .rise-reveal{transform:translateY(30px);transition:opacity 1s var(--ease),transform 1s var(--ease)}.js .rise-reveal.is-visible{transform:none}.text-token{display:inline-block;white-space:pre}.text-line{display:block}.page-leaving{opacity:0;transition:opacity .2s cubic-bezier(.27,0,.51,1)}
+/* TABLET */
+@media (min-width:810px) and (max-width:1279px){:root{--gutter:40px;--content-width:50%;--title-size:24px}.hero{gap:0}.hero-title{font-size:clamp(48px,7.6vw,99px)}.section-inner{grid-template-columns:1fr;gap:40px}.section h2{position:static}.site-footer{padding-top:100px}.footer-title{font-size:clamp(48px,7.6vw,99px)}.header-row{gap:16px}}
+/* PHONE */
+@media (max-width:809px){:root{--gutter:16px;--content-width:100%;--title-size:24px}html{scroll-padding-top:90px}.site-header{padding:16px}.header-row{gap:12px}.brand{flex-direction:column;gap:8px}.header-actions,.scroll-control{display:none}.menu-toggle{display:block}.hero{padding:104px 16px 0;min-height:100svh;height:auto;display:block;overflow:visible}.hero-main{position:relative;z-index:4;width:100%;gap:8px;margin:0 0 0}.experience-stat{display:none}.hero-title{font-size:clamp(2rem,9.5vw,3.6rem);line-height:.95;text-align:center;letter-spacing:.045em}.hero-role{font-size:clamp(12px,3.5vw,16px);line-height:1.2}.hero-quote{display:none}.information{padding-top:0}.section-inner{grid-template-columns:1fr;gap:40px}.section h2{position:static}.site-footer{padding:80px var(--gutter) 16px}.footer-title{font-size:clamp(40px,15.1vw,122px)}.mobile-panel{display:flex;position:fixed;inset:0;z-index:19;padding:120px 16px;flex-direction:column;justify-content:flex-end;gap:40px;background:rgba(0,0,0,.65);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);opacity:0;visibility:hidden;transform:translateY(-8px);transition:opacity .4s linear,transform .4s linear,visibility .4s;pointer-events:none}.menu-open .mobile-panel{opacity:1;visibility:visible;transform:none;pointer-events:auto}.menu-open{overflow:hidden}.mobile-panel a{font-size:24px;font-weight:600;width:max-content;max-width:100%}.mobile-panel .timezone{font-weight:600}.mobile-panel>*{opacity:0;transform:translateY(10px);transition:opacity .4s var(--ease),transform .4s var(--ease)}.menu-open .mobile-panel>*{opacity:1;transform:none}.menu-open .mobile-panel>*:nth-child(1){transition-delay:.2s}.menu-open .mobile-panel>*:nth-child(2){transition-delay:.3s}.menu-open .mobile-panel>*:nth-child(3){transition-delay:.4s}}
+@media(max-width:359px){.languages{grid-template-columns:1fr}.contact-link,.social-links a{font-size:22px}.work-status{font-size:14px}.identity{font-size:14px}}
+/* Respect visitors’ accessibility preferences. */
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}.js .reveal{opacity:1;transform:none}.text-token,.text-line{opacity:1!important;transform:none!important;filter:none!important}}
+</style>
 </head>
 <body>
-  <header class="site-header">
-    <nav class="nav-pill" aria-label="Main navigation">
-      <a class="nav-logo" href="#home" aria-label="Pratik home">P.</a>
-      <button class="nav-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="primary-navigation">
-        <span class="nav-toggle__line" aria-hidden="true"></span>
-        <span class="nav-toggle__line" aria-hidden="true"></span>
-        <span class="nav-toggle__line" aria-hidden="true"></span>
-      </button>
-      <ul class="nav-links" id="primary-navigation">
-        <li><a href="#work">Work</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#education">Education</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+<a class="skip-link" href="#content">Skip to content</a>
+<div class="page-shell">
+<div class="portrait-stage" aria-hidden="true"><div class="portrait"><img src="F7.png" alt="" fetchpriority="high"></div></div>
+<header class="site-header"><div class="header-row"><div class="brand"><span class="work-status"><span class="status-dot" aria-hidden="true"></span>Open to side projects</span></div><nav class="header-actions" aria-label="Contact navigation"><div class="header-links"><a href="https://framerusercontent.com/assets/rTbSorglm1i7qz47vsa7kToQTg.pdf" download="Pratik-Ambaliya-CV.pdf" target="_blank" rel="noopener">Download CV</a><a href="mailto:mark@anderson.dev">Contact Me</a></div><span class="timezone">(UTC–8)</span></nav><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu">Menu</button></div></header>
+<nav class="mobile-panel" id="mobile-menu" aria-label="Mobile contact navigation" aria-hidden="true" inert><a href="https://framerusercontent.com/assets/rTbSorglm1i7qz47vsa7kToQTg.pdf" download="Pratik-Ambaliya-CV.pdf" target="_blank" rel="noopener">Download CV</a><a href="mailto:mark@anderson.dev">Contact Me</a><span class="timezone">(UTC–8)</span></nav>
+<button class="scroll-control" type="button" data-destination="content">Scroll</button>
+<main>
+<section class="hero" id="hero" aria-labelledby="hero-title"><div class="hero-main"><div class="experience-stat"><div data-text-animate="word" data-delay="2000">2014→2025</div><div data-text-animate="word" data-delay="2070">10+ yrs exp.</div></div><h1 class="hero-title" id="hero-title" data-fit><span>Pratik</span><span>Ambaliya</span></h1><p class="hero-role" data-text-animate="line" data-delay="500">Senior Software Engineer, based in Los Angeles</p></div><blockquote class="hero-quote" data-text-animate="word" data-duration="1000">“ Whether it’s writing code or structuring a life, I aim for clarity, calm and long-term impact. I believe good systems are built with intent and consistency ”</blockquote></section>
+<div class="information" id="content">
+<section class="section" id="about" aria-labelledby="about-title"><div class="section-inner"><h2 id="about-title">01. About</h2><div class="section-body "><p class="reveal" data-threshold="0">I’m a senior software engineer with 10+ years of experience building web apps, tools, and internal platforms. I care about clean code, clear interfaces, and solving real problems with simple solutions. Currently based in Los Angeles, available for freelance work or collaboration on thoughtful digital products</p></div></div></section>
+<section class="section" id="experience" aria-labelledby="experience-title"><div class="section-inner"><h2 id="experience-title" data-text-animate="line" data-blur="10">02. Experience</h2><div class="section-body entries"><article class="entry reveal"><p class="muted">Remote  •  2022–Present</p><h3>Freelance Developer</h3><p class="description">Built custom dashboards, internal tools, and landing pages for startups in healthtech, fintech, and B2B SaaS. Worked end-to-end from wireframes to production.</p></article><article class="entry reveal"><p class="muted">Draftspace  •  San Francisco  •  2019–2022</p><h3>Lead Engineer</h3><p class="description">Led development of a collaborative writing platform used by 100K+ users. Focused on performance, real-time sync, and a seamless editor experience</p></article><article class="entry reveal"><p class="muted">Northflow  •  Remote  •  2016–2019</p><h3>Fullstack Developer</h3><p class="description">Developed internal CRM and reporting tools for logistics and operations teams. Optimized backend performance and redesigned legacy frontend to improve usability across departments. Collaborated closely with non-technical teams to translate workflow needs into scalable solutions. Stack: React, Node, PostgreSQL, AWS</p></article><article class="entry reveal"><p class="muted">Peak Studio  •  Berlin  •  2014–2016</p><h3>Frontend Intern</h3><p class="description">First job in tech. Learned the ropes of frontend development, accessibility, and shipping on time. Built UI components and maintained design systems</p></article></div></div></section>
+<section class="section" id="skills" aria-labelledby="skills-title"><div class="section-inner"><h2 id="skills-title">03. Skills</h2><div class="section-body skills"><span class="skill reveal">JavaScript</span><span class="skill reveal">TypeScript</span><span class="skill reveal">React</span><span class="skill reveal">Next.js</span><span class="skill reveal">Node.js</span><span class="skill reveal">Express</span><span class="skill reveal">GraphQL</span><span class="skill reveal">PostgreSQL</span><span class="skill reveal">MongoDB</span><span class="skill reveal">Git</span><span class="skill reveal">CI/CD</span><span class="skill reveal">AWS</span><span class="skill reveal">System Design</span><span class="skill reveal">AI</span><span class="skill reveal">Technical Writing</span><span class="skill reveal">Code Reviews</span><span class="skill reveal">Performance Optimization</span><span class="skill reveal">Product Thinking</span><span class="skill reveal">Testing</span><span class="skill reveal">Debugging</span><span class="skill reveal">Remote Collaboration</span></div></div></section>
+<section class="section" id="education" aria-labelledby="education-title"><div class="section-inner"><h2 id="education-title">04. Education</h2><div class="section-body entries"><article class="entry reveal"><p class="muted">Frontend Masters  •  2021–2022</p><h3>Advanced JavaScript &amp; React Track</h3><p class="description">Completed advanced coursework in frontend performance, component architecture, and modern development workflows. Focused on clean code, accessibility, and scalable design systems</p></article><article class="entry reveal"><p class="muted">UC Berkeley Extension  •  2017–2018</p><h3>Certificate Program: Full-Stack Web Development</h3><p class="description">Completed a hands-on program focused on JavaScript, React, Node.js, and REST APIs. Built team-based projects and deployed scalable applications using cloud infrastructure</p></article><article class="entry reveal"><p class="muted">University of Southern California  •  2010–2014</p><h3>Bachelor’s Degree: Computer Science</h3><p class="description">Studied core computer science principles including software engineering, algorithms, and system architecture. Graduated with strong foundations in both theoretical and practical aspects of programming</p></article></div></div></section>
+<section class="section" id="languages" aria-labelledby="languages-title"><div class="section-inner"><h2 id="languages-title">05. Languages</h2><div class="section-body languages"><article class="language-card reveal"><h3>English</h3><p class="muted">Highly proficient</p></article><article class="language-card reveal"><h3>Spanish</h3><p class="muted">Native speaker</p></article><article class="language-card reveal"><h3>German</h3><p class="muted">Beginner A2</p></article><article class="language-card reveal"><h3>Russian</h3><p class="muted">Beginner A1</p></article></div></div></section>
+<section class="section" id="references" aria-labelledby="references-title"><div class="section-inner"><h2 id="references-title">06. References</h2><div class="section-body entries"><article class="reference reveal"><div class="reference-person"><img src="https://framerusercontent.com/images/7T5AErnUrkh3uK66bJZUbCGME.png" alt="Julia Reyes" width="56" height="56" loading="lazy"><div><h3>Julia Reyes</h3><p class="muted">Haven Health  •  Founder</p></div></div><p>Pratik helped us rebuild our internal dashboard from scratch. He brought clarity to messy data and shipped features faster than we expected. Working with him felt like having an internal teammate — not an external contractor</p></article><article class="reference reveal"><div class="reference-person"><img src="https://framerusercontent.com/images/F9WMbOlPwzcXGOvjpExNSoQIY.png" alt="David Lin" width="56" height="56" loading="lazy"><div><h3>David Lin</h3><p class="muted">Northflow  •  Head of Technology</p></div></div><p>Pratik joined us as a fullstack developer and quickly became a go-to person for critical backend work. He doesn’t just write code, he understands the system, the users, and the business needs. Reliable, clear-headed, and always thoughtful</p></article><article class="reference reveal"><div class="reference-person"><img src="https://framerusercontent.com/images/kROq6ljfS36WjU3ueON1qraE.png" alt="Sarah Kim" width="56" height="56" loading="lazy"><div><h3>Sarah Kim</h3><p class="muted">Draftspace  •  VP of Engineering</p></div></div><p>I worked with Pratik during his time at Draftspace, and he consistently impressed us with his ability to solve complex problems without overengineering. His calm, methodical approach and strong communication skills made him an anchor on our team</p></article></div></div></section>
+<section class="section" id="awards" aria-labelledby="awards-title"><div class="section-inner"><h2 id="awards-title">07. Awards</h2><div class="section-body awards"><a class="award reveal" href="https://awwwards.com" target="_blank" rel="noopener noreferrer"><div class="award-heading"><h3>Website of the Month</h3><svg class="arrow" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg></div><p class="muted">Awwwards  •  2024</p></a><a class="award reveal" href="https://producthunt.com" target="_blank" rel="noopener noreferrer"><div class="award-heading"><h3>Top Project of the Week</h3><svg class="arrow" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg></div><p class="muted">Product Hunt  •  2024</p></a><a class="award reveal" href="https://devpost.com" target="_blank" rel="noopener noreferrer"><div class="award-heading"><h3>DevPost Hackathon Winner</h3><svg class="arrow" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 18 18 6M6 6h12v12"/></svg></div><p class="muted">DevPost  •  2023</p></a></div></div></section>
+<section class="section" id="publications" aria-labelledby="publications-title"><div class="section-inner"><h2 id="publications-title">08. Publications</h2><div class="section-body entries"><article class="publication reveal"><h3><a href="https://indiehackers.com" target="_blank" rel="noopener noreferrer">How I Built and Launched a Micro SaaS in 30 Days</a></h3><p class="muted">Indie Hackers  •  2024</p></article><article class="publication reveal"><h3><a href="https://smashingmagazine.com" target="_blank" rel="noopener noreferrer">Designing Developer Tools with UX in Mind</a></h3><p class="muted">Smashing Magazine  •  2023</p></article><article class="publication reveal"><h3><a href="https://techcrunch.com" target="_blank" rel="noopener noreferrer">The Cost of Overengineering: A Case Study from a Failed Product</a></h3><p class="muted">TechCrunch  •  2022</p></article></div></div></section>
+<section class="section" id="contact" aria-labelledby="contact-title"><div class="section-inner"><h2 id="contact-title">09. Contact</h2><div class="section-body contact-list"><div class="contact-item reveal"><p class="muted">Phone</p><a class="contact-link" href="tel:+1 213 555 0192">+1 213 555 0192</a></div><div class="contact-item reveal"><p class="muted">Email</p><a class="contact-link" href="mailto:mark@anderson.dev">mark@anderson.dev</a></div><div class="contact-item reveal"><p class="muted">Site</p><a class="contact-link" href="https://anderson.dev">anderson.dev</a></div><div class="contact-item reveal"><p class="muted">Socials</p><div class="social-links"><a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a><a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://x.com" target="_blank" rel="noopener noreferrer">X</a></div></div><div class="visitor-message"><p class="muted">Dear visitor,</p><p class="muted">Thank you for stopping by and taking the time to checkout my profile. Please feel free to reach out.</p><p class="muted">Sincerely,</p><div class="signature-group"><div class="signature-crop"><img src="https://framerusercontent.com/images/qijHbHMb3cHqtkVYxAL96u2nJeU.png" alt="Max Becker’s handwritten signature" width="1264" height="605" loading="lazy"></div><p class="signature-name">Max Becker</p></div></div></div></div></section>
+</div>
+</main>
+<footer class="site-footer"><p class="footer-title reveal rise-reveal" data-fit aria-label="Thanks for being here"><span>Thanks</span><span>for being</span><span>here</span></p></footer>
+</div>
+<script>
+/* Standalone animation controller. No frameworks or build tools required. */
+(function(){
+'use strict';
+const motionQuery=window.matchMedia('(prefers-reduced-motion: reduce)');
+const phoneQuery=window.matchMedia('(max-width: 809px)');
+const animations=new Set();
+function animate(el,keyframes,options){if(motionQuery.matches||!el.animate)return;const animation=el.animate(keyframes,options);animations.add(animation);animation.finished.then(()=>animations.delete(animation)).catch(()=>animations.delete(animation));}
+/* Text: word staggering (.07s), line staggering, and optional blur. */
+document.querySelectorAll('[data-text-animate]').forEach(el=>{
+ const kind=el.dataset.textAnimate,delay=Number(el.dataset.delay||0),duration=Number(el.dataset.duration||400),blur=Number(el.dataset.blur||0);
+ if(motionQuery.matches)return;
+ const source=el.textContent.trim();el.setAttribute('aria-label',source);
+ const pieces=kind==='word'?source.split(/(\s+)/):[source];el.textContent='';let index=0;
+ pieces.forEach(piece=>{if(/^\s+$/.test(piece)){el.append(document.createTextNode(piece));return;}const token=document.createElement('span');token.className=kind==='word'?'text-token':'text-line';token.textContent=piece;token.setAttribute('aria-hidden','true');el.append(token);animate(token,[{opacity:0,transform:'translateY(10px)',filter:'blur('+blur+'px)'},{opacity:1,transform:'translateY(0)',filter:'blur(0px)'}],{duration,delay:delay+index++*70,easing:'cubic-bezier(.22,1,.36,1)',fill:'both'});});
+});
+/* Hero heading mount: 30px vertical entrance over one second. */
+const title=document.querySelector('.hero-title');animate(title,[{opacity:0,transform:'translateY(30px)'},{opacity:1,transform:'translateY(0)'}],{duration:1000,easing:'cubic-bezier(.22,1,.36,1)',fill:'both'});if(phoneQuery.matches){title.style.fontSize='clamp(2rem,9.5vw,3.6rem)';title.style.letterSpacing='.045em';title.style.textAlign='center';}
+/* On-view fades: observed content cards use a 50% visibility threshold. */
+const targets=document.querySelectorAll('.reveal');
+if(!motionQuery.matches&&'IntersectionObserver' in window){document.documentElement.classList.add('js');const halfObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');halfObserver.unobserve(entry.target);}}),{threshold:.5});const anyObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');anyObserver.unobserve(entry.target);}}),{threshold:0});targets.forEach(el=>(el.dataset.threshold==='0'?anyObserver:halfObserver).observe(el));}else{targets.forEach(el=>el.classList.add('is-visible'));}
+/* Portrait tracks scroll progress continuously; control state changes independently. */
+const hero=document.getElementById('hero'),info=document.getElementById('content'),portrait=document.querySelector('.portrait'),portraitStage=document.querySelector('.portrait-stage'),scrollButton=document.querySelector('.scroll-control');let queued=false;
+function updatePortrait(){const isPhone=phoneQuery.matches,viewportHeight=window.innerHeight,stageWidth=portraitStage.clientWidth,gutter=parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--gutter'))||0,about=document.getElementById('about'),heroMain=document.querySelector('.hero-main'),scrollPadding=parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop)||0,aboutMargin=parseFloat(getComputedStyle(about).scrollMarginTop)||0,scrollRange=isPhone?Math.max(1,about.offsetTop-scrollPadding-aboutMargin):Math.max(hero.offsetHeight,1),progress=Math.max(0,Math.min(1,isPhone?window.scrollY/scrollRange:(window.scrollY-hero.offsetTop+scrollPadding+aboutMargin)/scrollRange)),startHeight=viewportHeight*(isPhone?1.5:2),endHeight=viewportHeight*.9,height=startHeight+(endHeight-startHeight)*progress,left=stageWidth*.5+(stageWidth-gutter-stageWidth*.5)*progress,startTop=isPhone?heroMain.getBoundingClientRect().bottom+4:0,top=startTop*(1-progress)+viewportHeight*.5*progress,translateX=-50-50*progress,translateY=-50*progress;portrait.style.left=left+'px';portrait.style.top=top+'px';portrait.style.width=height*(528/1936)+'px';portrait.style.height=height+'px';portrait.style.transform='translate('+translateX+'%, '+translateY+'%)';}
+function updateScroll(){queued=false;updatePortrait();const boundary=info.getBoundingClientRect().top,past=boundary<=window.innerHeight*.5;document.body.classList.toggle('scrolled',past);scrollButton.textContent=past?'Back to Top':'Scroll';scrollButton.dataset.destination=past?'hero':'content';scrollButton.setAttribute('aria-label',past?'Scroll back to the top':'Scroll to the content');}
+function requestUpdate(){if(!queued){queued=true;requestAnimationFrame(updateScroll);}}
+window.addEventListener('scroll',requestUpdate,{passive:true});window.addEventListener('resize',requestUpdate,{passive:true});updateScroll();
+scrollButton.addEventListener('click',()=>document.getElementById(scrollButton.dataset.destination).scrollIntoView({behavior:motionQuery.matches?'auto':'smooth',block:'start'}));
+/* Menu: blurred full-screen mobile disclosure, staggered links, Escape + focus trap. */
+const toggle=document.querySelector('.menu-toggle'),panel=document.getElementById('mobile-menu');
+function setMenu(open,restoreFocus=true){document.body.classList.toggle('menu-open',open);toggle.setAttribute('aria-expanded',String(open));toggle.textContent=open?'Close':'Menu';panel.setAttribute('aria-hidden',String(!open));panel.inert=!open;if(!open&&restoreFocus)toggle.focus();}
+panel.inert=true;toggle.addEventListener('click',()=>setMenu(toggle.getAttribute('aria-expanded')!=='true'));
+panel.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>setMenu(false,false)));
+document.addEventListener('keydown',event=>{if(!document.body.classList.contains('menu-open'))return;if(event.key==='Escape'){setMenu(false);return;}if(event.key==='Tab'){const controls=[toggle,...panel.querySelectorAll('a,button')];const first=controls[0],last=controls[controls.length-1];if(event.shiftKey&&document.activeElement===first){event.preventDefault();last.focus();}else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first.focus();}}});
+phoneQuery.addEventListener('change',event=>{if(!event.matches)setMenu(false,false);});
+/* Smooth anchors (also usable without JS through native CSS scrolling). */
+document.querySelectorAll('a[href^="#"]').forEach(link=>link.addEventListener('click',event=>{const target=document.getElementById(link.getAttribute('href').slice(1));if(!target)return;event.preventDefault();setMenu(false,false);target.scrollIntoView({behavior:motionQuery.matches?'auto':'smooth'});history.replaceState(null,'',link.getAttribute('href'));}));
+/* Fit each display heading by measuring its longest line. No arbitrary fixed desktop size. */
+function fitDisplay(el){if(phoneQuery.matches&&el.classList.contains('hero-title')){el.style.fontSize='clamp(2rem,9.5vw,3.6rem)';el.style.letterSpacing='.045em';el.style.textAlign='center';return;}const lines=el.querySelectorAll(':scope > span');if(!lines.length||!el.clientWidth)return;const canvas=document.createElement('canvas');const ctx=canvas.getContext('2d');if(!ctx)return;ctx.font='700 100px Switzer, Arial, sans-serif';const widest=Math.max(...Array.from(lines,line=>ctx.measureText(line.textContent).width));if(widest>0)el.style.fontSize=(el.clientWidth/widest*100*.995)+'px';}
+function fitAll(){document.querySelectorAll('[data-fit]').forEach(fitDisplay);}
+if('ResizeObserver'in window){const ro=new ResizeObserver(fitAll);document.querySelectorAll('[data-fit]').forEach(el=>ro.observe(el));}window.addEventListener('resize',fitAll,{passive:true});if(document.fonts){document.fonts.ready.then(fitAll);}fitAll();
 
-  <main>
-    <section class="hero" id="home" aria-labelledby="hero-name">
-      <div class="hero__inner">
-        <div class="hero__visual">
-          <h1 class="hero__name" id="hero-name">PRATIK</h1>
-          <img
-            class="hero__portrait"
-            src="F7.png"
-            alt="Pratik, Credit Protection Representative"
-            width="528"
-            height="1936"
-            fetchpriority="high"
-            decoding="async"
-          >
-        </div>
-        <div class="hero__intro">
-          <div class="hero__details">
-            <h2 class="hero__role">Credit Protection Representative</h2>
-          </div>
-          <div class="hero__details hero__details--right">
-            <p class="hero__description">Helping you understand your credit protection options and take the next step with confidence.</p>
-            <!-- Replace /contact with your own contact page, email, or booking URL. -->
-            <a class="hero__button" href="/contact">Let’s talk</a>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <script>
-    (() => {
-      const hero = document.querySelector('.hero');
-      const nav = document.querySelector('.nav-pill');
-      const navToggle = document.querySelector('.nav-toggle');
-      const navLinks = document.querySelector('.nav-links');
-      const name = document.querySelector('.hero__name');
-      const visual = document.querySelector('.hero__visual');
-      const mobile = window.matchMedia('(max-width: 809.98px)');
-      const canvas = document.createElement('canvas');
-      const context = canvas.getContext('2d');
-
-      function setNavOpen(open, returnFocus = false) {
-        nav.classList.toggle('is-open', open);
-        navToggle.setAttribute('aria-expanded', String(open));
-        navToggle.setAttribute('aria-label', open ? 'Close navigation menu' : 'Open navigation menu');
-        if (returnFocus) navToggle.focus();
-      }
-
-      navToggle.addEventListener('click', () => {
-        setNavOpen(navToggle.getAttribute('aria-expanded') !== 'true');
-      });
-      navLinks.addEventListener('click', (event) => {
-        if (event.target.closest('a')) setNavOpen(false);
-      });
-      document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape' && navToggle.getAttribute('aria-expanded') === 'true') {
-          setNavOpen(false, true);
-        }
-      });
-      document.addEventListener('click', (event) => {
-        if (!nav.contains(event.target)) setNavOpen(false);
-      });
-      mobile.addEventListener('change', (event) => {
-        if (!event.matches) setNavOpen(false);
-      });
-
-      // Fit the name to the available mobile width, including letter spacing.
-      function fitMobileName() {
-        if (!mobile.matches) {
-          name.style.removeProperty('font-size');
-          return;
-        }
-        if (!context) return;
-        context.font = '400 100px Sora';
-        const text = name.textContent.trim();
-        const glyphWidth = context.measureText(text).width / 100;
-        const spacingWidth = text.length * 0.19;
-        const availableWidth = visual.clientWidth;
-        name.style.fontSize = (availableWidth / (glyphWidth + spacingWidth)) + 'px';
-      }
-
-      fitMobileName();
-      if ('ResizeObserver' in window) {
-        new ResizeObserver(fitMobileName).observe(visual);
-      } else {
-        window.addEventListener('resize', fitMobileName, { passive: true });
-      }
-      if (document.fonts) document.fonts.ready.then(fitMobileName);
-      mobile.addEventListener('change', fitMobileName);
-
-      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        requestAnimationFrame(() => hero.classList.add('is-entering'));
-      }
-    })();
-  </script>
+/* Page exit fade for same-tab external navigation. Native downloads/mail links are preserved. */
+document.querySelectorAll('a[href]').forEach(link=>link.addEventListener('click',event=>{if(event.defaultPrevented||event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey||link.target==='_blank'||link.hasAttribute('download'))return;const href=link.getAttribute('href');if(!/^https?:/i.test(href)||motionQuery.matches)return;event.preventDefault();document.body.classList.add('page-leaving');setTimeout(()=>{window.location.href=href;},200);}));
+window.addEventListener('pageshow',()=>document.body.classList.remove('page-leaving'));
+/* Stop loops in a background tab; honor a preference change without reloading. */
+document.addEventListener('visibilitychange',()=>document.querySelectorAll('.status-dot').forEach(dot=>dot.style.visibility=document.hidden?'hidden':'visible'));
+motionQuery.addEventListener('change',event=>{if(event.matches){animations.forEach(animation=>animation.finish());targets.forEach(el=>el.classList.add('is-visible'));document.documentElement.classList.remove('js');}});
+})();
+</script>
 </body>
 </html>
