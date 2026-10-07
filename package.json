@@ -1,0 +1,12 @@
+{
+  "name": "pratik-ambaliya-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "format": "prettier --write index.html src/css/style.css src/js/main.js .vscode/*.json",
+    "format:check": "prettier --check index.html src/css/style.css src/js/main.js .vscode/*.json"
+  },
+  "devDependencies": {
+    "prettier": "^3.6.2"
+  }
+}

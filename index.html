@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <!--
 HOME PAGE - STANDALONE RECREATION
 Save this entire file as index.html and open it in a modern browser.
@@ -11,196 +11,471 @@ status glow/core loop; mobile-menu transitions; link/award hover; smooth anchors
 handwritten signature reveal (triggers when centered in viewport).
 -->
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="color-scheme" content="dark">
-<title>Pratik Ambaliya - Senior Software Engineer</title>
-<meta name="description" content="Senior Software Engineer based in Los Angeles. 8+ years of experience building thoughtful digital products. Open to side projects.">
-<link rel="preconnect" href="https://cdn.fontshare.com" crossorigin>
-<link rel="preconnect" href="https://framerusercontent.com">
-<style>
-/* Desktop: >=1280px; Tablet: 810-1279px; Phone: <=809px. */
-@font-face{font-family:Switzer;src:url('https://cdn.fontshare.com/wf/BLNB4FAQFNK56DWWNF7PMGTCOTZHOEII/ST3WKSSDMBK2MIQQO3MAVYWLF4FTOLFV/6IN5WOLRCYP4G4MOCOHOMXNON6Q7MDAR.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
-@font-face{font-family:Switzer;src:url('https://cdn.fontshare.com/wf/5SZVFDB7V52TI6ULVC6J3WQZQCIZVDV5/ODYPSTCUDMKSTYIPTV4CLQ7URIK7XYBJ/YS3VPNVO4B3TOJMEXDGFZQ4TLZGGSRZC.woff2') format('woff2');font-weight:600;font-style:normal;font-display:swap}
-@font-face{font-family:Switzer;src:url('https://cdn.fontshare.com/wf/HBNTRIISA5MEXGL5WPYI7CV2HIWTDV3Q/YDPDINVT673XLXNSTMLG4JNCZZMVVNPN/Y7SCNZJOT2MW5ADSGOFLDGH4TNL4JCQY.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap}
-:root{--background:#000;--foreground:#fff;--muted:#949494;--accent:#00ffae;--status:#eaff00;--border:#949494;--max-width:1440px;--gutter:64px;--content-width:67%;--title-size:32px;--ease:cubic-bezier(.22,1,.36,1)}
-*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:100px}body{margin:0;background:var(--background);color:var(--foreground);font-family:Switzer,Inter,Arial,sans-serif;font-size:16px;line-height:1.2;overflow-x:hidden}p,h1,h2,h3,blockquote{margin:0}a{color:inherit;text-decoration:none;transition:color .3s cubic-bezier(.44,0,.56,1)}a:hover{color:var(--accent)}a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:6px}button{font:inherit;color:inherit;cursor:pointer}img{display:block;max-width:100%}::selection{background:var(--accent);color:#000}.skip-link{position:fixed;top:-80px;left:16px;padding:12px 16px;z-index:100;background:#000}.skip-link:focus{top:16px}.muted{color:var(--muted)}.page-shell{position:relative;max-width:var(--max-width);margin:0 auto;isolation:isolate}
-/* Portrait starts showing its upper half, then fits fully at the right on scroll. */
-.portrait-stage{position:fixed;inset:0;max-width:var(--max-width);margin:0 auto;z-index:3;overflow:hidden;pointer-events:none}.portrait{position:absolute;left:50%;top:0;width:54.5455vh;height:200vh;transform:translateX(-50%);will-change:width,height,left,top,transform}.portrait img{width:100%;height:100%;max-width:none;object-fit:contain;object-position:center;transform-origin:top center}
-@keyframes page-enter{from{opacity:0}to{opacity:1}}body{animation:page-enter .2s cubic-bezier(.27,0,.51,1) both}
-/* Header and work-status loop. Only the visible controls receive pointer events. */
-.site-header{position:fixed;inset:0 0 auto;max-width:var(--max-width);margin:0 auto;padding:32px var(--gutter);z-index:20;pointer-events:none;animation:header-enter 1s var(--ease) .8s both}.header-row{display:flex;justify-content:space-between;align-items:flex-start;gap:24px}.brand{display:flex;gap:8px;align-items:flex-start;pointer-events:auto;font-weight:600}.identity{white-space:nowrap}.work-status{display:inline-flex;gap:8px;align-items:center;color:var(--status);white-space:nowrap}.status-dot{position:relative;display:block;width:12px;height:12px;flex-shrink:0}.status-dot::before,.status-dot::after{content:'';position:absolute;border-radius:50%;background:var(--status)}.status-dot::before{inset:0;opacity:.6;box-shadow:0 0 24px 4px var(--status);animation:status-glow 1.5s cubic-bezier(.44,0,.56,1) infinite}.status-dot::after{width:8px;height:8px;left:2px;top:2px;animation:status-core 1.5s cubic-bezier(.44,0,.56,1) infinite}@keyframes status-glow{from{opacity:.6;transform:rotate(0)}to{opacity:.1;transform:rotate(360deg)}}@keyframes status-core{from{transform:scale(1) rotate(0)}to{transform:scale(.6) rotate(360deg)}}@keyframes header-enter{from{opacity:0}to{opacity:1}}
-.header-actions{width:25%;display:flex;justify-content:space-between;gap:16px;font-weight:600;pointer-events:auto}.header-links{display:flex;flex-direction:column;gap:10px}.timezone{white-space:nowrap}.menu-toggle{display:none;pointer-events:auto;border:0;background:transparent;padding:0;font-weight:600}.mobile-panel{display:none}.scroll-control{position:fixed;bottom:32px;left:calc(50% + (min(100vw,1440px) - 2 * var(--gutter)) * .25);z-index:15;border:0;padding:0;background:transparent;font-weight:600;animation:header-enter 1s var(--ease) .8s both;transition:color .3s var(--ease)}.scroll-control:hover{color:var(--accent)}
-/* Hero proportions and auto-fitted display lettering. */
-.hero{position:relative;min-height:100svh;height:100svh;padding:0 var(--gutter) 32px;display:flex;align-items:flex-end;justify-content:space-between;gap:24px}.hero-main{width:var(--content-width);display:flex;flex-direction:column;gap:32px}.experience-stat{color:var(--accent);font-size:32px;font-weight:700;line-height:1;letter-spacing:-.03em}.hero-title{position:relative;z-index:1;font-size:clamp(48px,11vw,160px);line-height:.9;text-align:left;text-transform:uppercase;font-weight:700;letter-spacing:0;width:100%;transform-origin:center}.hero-title span,.footer-title span{display:block;white-space:nowrap}.hero-role{font-weight:600}.mobile-role-break{display:none}.hero-quote{position:absolute;top:23.46%;right:var(--gutter);width:calc((100% - 2 * var(--gutter)) * .25);font-weight:700;text-transform:uppercase;text-align:justify;line-height:1.2}
-/* Content: two columns desktop; left half of viewport on tablet. */
-.information{padding-top:220px}.section{padding:0 var(--gutter) 120px;scroll-margin-top:100px}#contact{padding-bottom:48px}.section-inner{width:var(--content-width);border-top:.5px solid var(--border);padding-top:24px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:start;position:relative}.section h2{font-size:var(--title-size);font-weight:700;line-height:1;text-transform:uppercase;position:sticky;top:80px}.section-body{min-width:0}.section-body p{overflow-wrap:anywhere;text-wrap:pretty}.about-copy{display:flex;flex-direction:column;gap:20px}h3{font-size:24px;line-height:1.2;font-weight:700}.entries{display:flex;flex-direction:column;gap:80px}.entry h3{margin-top:16px}.description{margin-top:40px}.responsibilities{margin-top:24px;padding-left:20px;display:flex;flex-direction:column;gap:12px}.responsibilities li{padding-left:4px}.skills{display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start}.skill{border:1px solid var(--border);border-radius:8px;padding:4px 12px;white-space:nowrap;transition:border-color .3s var(--ease),color .3s var(--ease),transform .3s var(--ease)}.skill:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}.languages{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}.language-card{padding:16px;border:1px solid var(--border);border-bottom-width:2px;border-radius:12px;display:flex;flex-direction:column;gap:32px;transition:border-color .3s var(--ease),transform .3s var(--ease)}.language-card:hover{border-color:var(--accent);transform:translateY(-2px)}.reference-person{display:flex;gap:24px;align-items:center;margin-bottom:32px}.reference-person img{width:56px;height:56px;object-fit:cover;border-radius:12px;flex-shrink:0}.reference-person h3{margin-bottom:8px}.awards{display:flex;flex-direction:column;gap:24px}.award{display:block;padding:16px 16px 17px;border:1px solid var(--border);border-bottom-width:2px;border-radius:12px;transition:border-color .3s var(--ease),color .4s cubic-bezier(.44,0,.56,1),transform .3s var(--ease)}.award:hover,.award:focus-visible{border-color:var(--accent);transform:translateY(-2px)}.award-heading{display:flex;gap:10px;justify-content:space-between;align-items:start}.arrow{flex:0 0 20px;margin-top:2px}.award .muted{margin-top:32px}.publication .muted{margin-top:16px}.contact-list{display:flex;flex-direction:column;gap:40px}.contact-item>.muted{margin-bottom:16px}.contact-link,.social-links a{font-size:24px;font-weight:700;line-height:1.2;overflow-wrap:anywhere}.social-links{display:flex;flex-direction:row;align-items:center;gap:12px}.social-links a{display:inline-flex;width:44px;height:44px;justify-content:center;align-items:center;border:1px solid var(--border);border-radius:50%;transition:color .3s,border-color .3s,transform .3s var(--ease)}.social-links a:hover,.social-links a:focus-visible{color:var(--accent);border-color:var(--accent);transform:translateY(-2px)}.social-links svg{display:block;width:22px;height:22px;fill:currentColor}.visitor-message{display:flex;flex-direction:column;gap:40px}
-/* Signature: white ink on page background, no card, no replay button.
-   Width is responsive (clamped) while height follows the SVG's natural aspect ratio. */
-.signature-group{padding:16px 0;display:flex;flex-direction:column;gap:12px;align-items:flex-start}
-.signature-art{display:block;width:clamp(220px,42%,520px);line-height:0}
-.signature-art svg{display:block;width:100%;height:auto;overflow:visible}
-.signature-name{font-weight:600;color:var(--muted)}
-.site-footer{padding:80px var(--gutter) 32px}.footer-title{width:var(--content-width);font-size:clamp(48px,10.8vw,160px);font-weight:700;line-height:.9;text-transform:uppercase;letter-spacing:0}
-/* Reveal defaults stay visible when scripting is unavailable. */
-.js .reveal{opacity:0;transition:opacity 1s var(--ease)}.js .reveal.is-visible{opacity:1}.js .rise-reveal{transform:translateY(30px);transition:opacity 1s var(--ease),transform 1s var(--ease)}.js .rise-reveal.is-visible{transform:none}.text-token{display:inline-block;white-space:pre}.text-line{display:block}.page-leaving{opacity:0;transition:opacity .2s cubic-bezier(.27,0,.51,1)}
-/* TABLET */
-@media (min-width:810px) and (max-width:1279px){:root{--gutter:40px;--content-width:50%;--title-size:24px}.hero{gap:0}.hero-title{font-size:clamp(48px,7.6vw,99px)}.section-inner{grid-template-columns:1fr;gap:40px}.section h2{position:static}#contact{padding-bottom:40px}.site-footer{padding-top:48px}.footer-title{font-size:clamp(48px,7.6vw,99px)}.header-row{gap:16px}.signature-art{width:clamp(240px,55%,440px)}}
-/* PHONE */
-@media (max-width:809px){:root{--gutter:16px;--content-width:100%;--title-size:24px}html{scroll-padding-top:90px}.site-header{padding:16px}.header-row{gap:12px}.brand{flex-direction:column;gap:8px}.header-actions,.scroll-control{display:none}.menu-toggle{display:block}.hero{padding:104px 16px 0;min-height:100svh;height:auto;display:block;overflow:visible}.hero-main{position:relative;z-index:4;width:100%;gap:8px;margin:0 0 0}.experience-stat{display:none}.hero-title{font-size:2rem;line-height:.95;text-align:center;letter-spacing:.5em}.hero-role{font-size:clamp(16px,4.8vw,20px);line-height:1.25;text-align:center}.mobile-role-break{display:block}.hero-quote{position:relative;z-index:4;inset:auto;display:block;width:100%;margin:12px 0 0;font-size:clamp(12px,3.5vw,14px);font-weight:400;line-height:1.4;text-align:center;text-wrap:pretty}.information{padding-top:0}.section-inner{grid-template-columns:1fr;gap:40px}.section h2{position:static}.site-footer{padding:32px var(--gutter) 16px}#contact{padding-bottom:24px}.footer-title{font-size:clamp(2rem,12vw,3rem)}.signature-art{width:min(78vw,360px)}.mobile-panel{display:flex;position:fixed;inset:0;z-index:19;padding:96px 16px max(32px,env(safe-area-inset-bottom));flex-direction:column;justify-content:flex-start;gap:clamp(12px,2.2vh,20px);overflow-y:auto;overscroll-behavior:contain;background:rgba(0,0,0,.9);backdrop-filter:none;-webkit-backdrop-filter:none;opacity:0;visibility:hidden;transform:translateY(-8px);transition:opacity .4s linear,transform .4s linear,visibility .4s;pointer-events:none}.menu-open .mobile-panel{opacity:1;visibility:visible;transform:none;pointer-events:auto}.menu-open{overflow:hidden}.mobile-panel a{font-size:24px;font-weight:600;width:max-content;max-width:100%}.mobile-panel .timezone{font-weight:600}.mobile-panel>*{opacity:0;transform:translateY(10px);transition:opacity .4s var(--ease),transform .4s var(--ease)}.menu-open .mobile-panel>*{opacity:1;transform:none}.menu-open .mobile-panel>*:nth-child(1){transition-delay:.12s}.menu-open .mobile-panel>*:nth-child(2){transition-delay:.18s}.menu-open .mobile-panel>*:nth-child(3){transition-delay:.24s}.menu-open .mobile-panel>*:nth-child(4){transition-delay:.3s}.menu-open .mobile-panel>*:nth-child(5){transition-delay:.36s}.menu-open .mobile-panel>*:nth-child(6){transition-delay:.42s}.menu-open .mobile-panel>*:nth-child(7){transition-delay:.48s}.menu-open .mobile-panel>*:nth-child(8){transition-delay:.54s}.menu-open .mobile-panel>*:nth-child(9){transition-delay:.6s}.menu-open .mobile-panel>*:nth-child(10){transition-delay:.66s}.menu-open .mobile-panel>*:nth-child(11){transition-delay:.72s}}
-@media(max-width:359px){.languages{grid-template-columns:1fr}.contact-link,.social-links a{font-size:22px}.work-status{font-size:14px}.identity{font-size:14px}}
-/* Respect visitors’ accessibility preferences. */
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}.js .reveal{opacity:1;transform:none}.text-token,.text-line{opacity:1!important;transform:none!important;filter:none!important}}
-</style>
-</head>
-<body>
-<a class="skip-link" href="#content">Skip to content</a>
-<div class="page-shell">
-<div class="portrait-stage" aria-hidden="true"><div class="portrait"><img src="F7.png" alt="" fetchpriority="high"></div></div>
-<header class="site-header"><div class="header-row"><div class="brand"><span class="work-status"><span class="status-dot" aria-hidden="true"></span>Open to side projects</span></div><nav class="header-actions" aria-label="Contact navigation"><div class="header-links"><a href="https://framerusercontent.com/assets/rTbSorglm1i7qz47vsa7kToQTg.pdf" download="Pratik-Ambaliya-CV.pdf" target="_blank" rel="noopener">Download CV</a></div><a class="timezone" href="mailto:Pra987amb@Yahoo.com">Contact Me</a></nav><button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu">Menu</button></div></header>
-<nav class="mobile-panel" id="mobile-menu" aria-label="Mobile navigation" aria-hidden="true" inert><a href="#about">01. About</a><a href="#experience">02. Experience</a><a href="#skills">03. Skills</a><a href="#education">04. Education</a><a href="#languages">05. Languages</a><a href="#references">06. References</a><a href="#certificates">07. Certificates</a><a href="#contact">08. Contact</a><a href="https://framerusercontent.com/assets/rTbSorglm1i7qz47vsa7kToQTg.pdf" download="Pratik-Ambaliya-CV.pdf" target="_blank" rel="noopener">Download CV</a><a href="mailto:Pra987amb@Yahoo.com">Contact Me</a></nav>
-<button class="scroll-control" type="button" data-destination="content">Scroll</button>
-<main>
-<section class="hero" id="hero" aria-labelledby="hero-title"><div class="hero-main"><div class="experience-stat"><div data-text-animate="word" data-delay="2000">2019→2026</div><div data-text-animate="word" data-delay="2070">8+ yrs exp.</div></div><h1 class="hero-title" id="hero-title" data-fit><span>Pratik</span><span>Ambaliya</span></h1><p class="hero-role">Credit Protection Representative, Richmond Hill, ON</p></div><blockquote class="hero-quote" data-text-animate="word" data-duration="1000">Protecting credit means protecting people. I work with empathy, clarity, and diligence, because lasting security is built one careful decision at a time.</blockquote></section>
-<div class="information" id="content">
-<section class="section" id="about" aria-labelledby="about-title"><div class="section-inner"><h2 id="about-title">01. About</h2><div class="section-body about-copy"><p class="reveal" data-threshold="0">Finance professional with a cleared CFA Level 2 and hands-on credit protection experience, combining analytical depth with people-first service.</p><p class="reveal" data-threshold="0">I help clients safeguard their financial standing through fraud detection, dispute resolution, and clear, compliant processes restoring confidence one case at a time.</p><p class="reveal" data-threshold="0">My CFA Level 2 preparation has sharpened my ability to assess risk, analyze credit, and evaluate financial data with rigor and discipline.</p><p class="reveal" data-threshold="0">I believe lasting financial security is built on trust, transparency, and consistent follow-through.</p><p class="reveal" data-threshold="0">Whether protecting a credit profile or analyzing financial decisions, I aim for clarity, integrity, and long-term impact.</p></div></div></section>
-<section class="section" id="experience" aria-labelledby="experience-title"><div class="section-inner"><h2 id="experience-title" data-text-animate="line" data-blur="10">02. Experience</h2><div class="section-body entries"><article class="entry reveal"><p class="muted">March 2024-Present  •  TD Canada Trust</p><h3>Credit Protection Representative</h3><ul class="responsibilities"><li>Provide tailored solutions that suit each customer’s portfolio, balancing customer satisfaction with company compliance.</li><li>Learn and adapt to new processes and procedures, and apply new value-proposition strategies to drive results.</li><li>Contribute deep technical knowledge to internal and external stakeholders.</li><li>Build in-depth familiarity with the business unit’s operational responsibilities, cross-functional points of contact, and legal requirements across supported jurisdictions.</li><li>Achieve business objectives by applying comprehensive product knowledge gained during training.</li><li>Provide inbound and outbound advice, service, and sales support for moderately to highly complex financial transactions, delivering complete and accurate first-contact resolutions.</li></ul></article><article class="entry reveal"><p class="muted">January 2022-December 2022  •  The Financial Supermarket</p><h3>Financial Analyst</h3><ul class="responsibilities"><li>Research investment opportunities by analyzing market trends, economic indicators, and company financials.</li><li>Create financial models to evaluate potential investments and recommend portfolio adjustments.</li><li>Identify and assess organizational financial risks, and develop risk-management strategies and policies.</li><li>Analyze financial statements and performance metrics; prepare budgets, forecasts, and financial reports.</li><li>Support the internal team and contribute to organizational process improvements.</li></ul></article></div></div></section>
-<section class="section" id="skills" aria-labelledby="skills-title"><div class="section-inner"><h2 id="skills-title">03. Skills</h2><div class="section-body skills"><span class="skill reveal">Credit analysis</span><span class="skill reveal">Risk assessment</span><span class="skill reveal">Financial analysis</span><span class="skill reveal">Fraud detection</span><span class="skill reveal">Investment analysis</span><span class="skill reveal">Regulatory compliance</span><span class="skill reveal">FCRA compliance</span><span class="skill reveal">Data privacy</span><span class="skill reveal">Financial modeling</span><span class="skill reveal">Quantitative analysis</span><span class="skill reveal">Portfolio analysis</span><span class="skill reveal">Fixed income</span><span class="skill reveal">Valuation</span><span class="skill reveal">Due diligence</span><span class="skill reveal">Dispute resolution</span><span class="skill reveal">Customer service</span><span class="skill reveal">Identity verification</span><span class="skill reveal">Communication</span><span class="skill reveal">Problem solving</span><span class="skill reveal">Documentation</span><span class="skill reveal">Ethics</span></div></div></section>
-<section class="section" id="education" aria-labelledby="education-title"><div class="section-inner"><h2 id="education-title">04. Education</h2><div class="section-body entries"><article class="entry reveal"><p class="muted">Conestoga College  •  Kitchener, ON  •  Jan 2024-Aug 2024</p><h3>Post Graduation in Financial Planning</h3></article><article class="entry reveal"><p class="muted">Conestoga College  •  Guelph, ON  •  Jan 2023-Aug 2023</p><h3>Post Graduation in Financial Technology</h3></article><article class="entry reveal"><p class="muted">VNSGU  •  Surat, India  •  Aug 2016-June 2019</p><h3>Bachelor of Commerce</h3></article></div></div></section>
-<section class="section" id="languages" aria-labelledby="languages-title"><div class="section-inner"><h2 id="languages-title">05. Languages</h2><div class="section-body languages"><article class="language-card reveal"><h3>English</h3><p class="muted">Highly proficient</p></article><article class="language-card reveal"><h3>Hindi</h3><p class="muted">Native speaker</p></article><article class="language-card reveal"><h3>French</h3><p class="muted">Beginner A1</p></article><article class="language-card reveal"><h3>Gujarati</h3><p class="muted">Highly proficient</p></article></div></div></section>
-<section class="section" id="references" aria-labelledby="references-title"><div class="section-inner"><h2 id="references-title">06. References</h2><div class="section-body entries"><article class="reference reveal"><div class="reference-person"><img src="ArshnoorRef_Img.jpg" alt="Arshnoor Singh Ahuja" width="56" height="56" loading="lazy"><div><h3>Arshnoor Singh Ahuja</h3><p class="muted">Financial Analyst, TD Bank</p></div></div><p>“I’ve worked with Pratik on complex credit disputes and fraud reviews; his analysis is sharp, documentation crisp, and communication clear. He balances client empathy with risk discipline, keeping stakeholders aligned and decisions timely. Reliable, proactive, and privacy conscious, he elevates the team.”</p></article><article class="reference reveal"><div class="reference-person"><img src="MehulRef_Img.jpeg" alt="Mehul Jariwala" width="56" height="56" loading="lazy"><div><h3>Mehul Jariwala</h3><p class="muted">General Manager, CIBC</p></div></div><p>“Pratik is the calm in high-pressure escalations professional, courteous, and solutions-focused. He protects customers and the bank through diligent verification, policy adherence, and timely follow-through. A trusted partner who improves service quality and resolves issues the right way.”</p></article><article class="reference reveal"><div class="reference-person"><img src="MihirRef_Img.jpeg" alt="Mihir Shah" width="56" height="56" loading="lazy"><div><h3>Mihir Shah</h3><p class="muted">Quality Control Administrator, RBC</p></div></div><p>“Pratik’s cases are audit-ready accurate, traceable, and compliant with privacy standards. He embraces feedback, fixes root causes, and collaborates to strengthen controls. Quality-minded and dependable, he makes oversight easy.”</p></article></div></div></section>
-<section class="section" id="certificates" aria-labelledby="certificates-title"><div class="section-inner"><h2 id="certificates-title">07. Certificates</h2><div class="section-body entries"><article class="entry reveal"><p class="muted">June 2020</p><h3>Chartered Financial Analyst (Level 2 Cleared)</h3></article><article class="entry reveal"><p class="muted">Pursuing</p><h3>Canadian Security Course</h3></article></div></div></section>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="dark" />
+    <title>Pratik Ambaliya - Credit Protection Representative</title>
+    <meta
+      name="description"
+      content="Finance professional with a cleared CFA Level 2 and hands-on credit protection experience, combining analytical depth with people-first service."
+    />
+    <link rel="preconnect" href="https://cdn.fontshare.com" crossorigin />
+    <link rel="preconnect" href="https://framerusercontent.com" />
+    <link rel="stylesheet" href="src/css/style.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#content">Skip to content</a>
+    <div class="page-shell">
+      <div class="portrait-stage" aria-hidden="true">
+        <div class="portrait">
+          <img src="public/assets/images/F7.png" alt="" fetchpriority="high" />
+        </div>
+      </div>
+      <header class="site-header">
+        <div class="header-row">
+          <div class="brand">
+            <span class="work-status"
+              ><span class="status-dot" aria-hidden="true"></span>Open to side projects</span
+            >
+          </div>
+          <nav class="header-actions" aria-label="Contact navigation">
+            <div class="header-links">
+              <a
+                href="public/assets/images/CV_Pratik%20Ambaliya.docx"
+                download="CV_Pratik-Ambaliya.docx"
+                target="_blank"
+                rel="noopener"
+                >Download CV</a
+              >
+            </div>
+            <a class="timezone" href="mailto:Pra987amb@Yahoo.com">Contact Me</a>
+          </nav>
+          <button
+            class="menu-toggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="mobile-menu"
+          >
+            Menu
+          </button>
+        </div>
+      </header>
+      <nav
+        class="mobile-panel"
+        id="mobile-menu"
+        aria-label="Mobile navigation"
+        aria-hidden="true"
+        inert
+      >
+        <a href="#about">01. About</a><a href="#experience">02. Experience</a
+        ><a href="#skills">03. Skills</a><a href="#education">04. Education</a
+        ><a href="#languages">05. Languages</a><a href="#references">06. References</a
+        ><a href="#certificates">07. Certificates</a><a href="#contact">08. Contact</a
+        ><a
+          href="public/assets/images/CV_Pratik%20Ambaliya.docx"
+          download="CV_Pratik-Ambaliya.docx"
+          target="_blank"
+          rel="noopener"
+          >Download CV</a
+        ><a href="mailto:Pra987amb@Yahoo.com">Contact Me</a>
+      </nav>
+      <button class="scroll-control" type="button" data-destination="content">Scroll</button>
+      <main>
+        <section class="hero" id="hero" aria-labelledby="hero-title">
+          <div class="hero-main">
+            <div class="experience-stat">
+              <div data-text-animate="word" data-delay="2000">2019→2026</div>
+              <div data-text-animate="word" data-delay="2070">8+ yrs exp.</div>
+            </div>
+            <h1 class="hero-title" id="hero-title" data-fit>
+              <span>Pratik</span><span>Ambaliya</span>
+            </h1>
+            <p class="hero-role">Credit Protection Representative, Richmond Hill, ON</p>
+          </div>
+          <blockquote class="hero-quote" data-text-animate="word" data-duration="1000">
+            Protecting credit means protecting people. I work with empathy, clarity, and diligence,
+            because lasting security is built one careful decision at a time.
+          </blockquote>
+        </section>
+        <div class="information" id="content">
+          <section class="section" id="about" aria-labelledby="about-title">
+            <div class="section-inner">
+              <h2 id="about-title">01. About</h2>
+              <div class="section-body about-copy">
+                <p class="reveal" data-threshold="0">
+                  Finance professional with a cleared CFA Level 2 and hands-on credit protection
+                  experience, combining analytical depth with people-first service.
+                </p>
+                <p class="reveal" data-threshold="0">
+                  I help clients safeguard their financial standing through fraud detection, dispute
+                  resolution, and clear, compliant processes restoring confidence one case at a
+                  time.
+                </p>
+                <p class="reveal" data-threshold="0">
+                  My CFA Level 2 preparation has sharpened my ability to assess risk, analyze
+                  credit, and evaluate financial data with rigor and discipline.
+                </p>
+                <p class="reveal" data-threshold="0">
+                  I believe lasting financial security is built on trust, transparency, and
+                  consistent follow-through.
+                </p>
+                <p class="reveal" data-threshold="0">
+                  Whether protecting a credit profile or analyzing financial decisions, I aim for
+                  clarity, integrity, and long-term impact.
+                </p>
+              </div>
+            </div>
+          </section>
+          <section class="section" id="experience" aria-labelledby="experience-title">
+            <div class="section-inner">
+              <h2 id="experience-title" data-text-animate="line" data-blur="10">02. Experience</h2>
+              <div class="section-body entries">
+                <article class="entry reveal">
+                  <p class="muted">March 2024-Present • TD Canada Trust</p>
+                  <h3>Credit Protection Representative</h3>
+                  <ul class="responsibilities">
+                    <li>
+                      Provide tailored solutions that suit each customer’s portfolio, balancing
+                      customer satisfaction with company compliance.
+                    </li>
+                    <li>
+                      Learn and adapt to new processes and procedures, and apply new
+                      value-proposition strategies to drive results.
+                    </li>
+                    <li>
+                      Contribute deep technical knowledge to internal and external stakeholders.
+                    </li>
+                    <li>
+                      Build in-depth familiarity with the business unit’s operational
+                      responsibilities, cross-functional points of contact, and legal requirements
+                      across supported jurisdictions.
+                    </li>
+                    <li>
+                      Achieve business objectives by applying comprehensive product knowledge gained
+                      during training.
+                    </li>
+                    <li>
+                      Provide inbound and outbound advice, service, and sales support for moderately
+                      to highly complex financial transactions, delivering complete and accurate
+                      first-contact resolutions.
+                    </li>
+                  </ul>
+                </article>
+                <article class="entry reveal">
+                  <p class="muted">January 2022-December 2022 • The Financial Supermarket</p>
+                  <h3>Financial Analyst</h3>
+                  <ul class="responsibilities">
+                    <li>
+                      Research investment opportunities by analyzing market trends, economic
+                      indicators, and company financials.
+                    </li>
+                    <li>
+                      Create financial models to evaluate potential investments and recommend
+                      portfolio adjustments.
+                    </li>
+                    <li>
+                      Identify and assess organizational financial risks, and develop
+                      risk-management strategies and policies.
+                    </li>
+                    <li>
+                      Analyze financial statements and performance metrics; prepare budgets,
+                      forecasts, and financial reports.
+                    </li>
+                    <li>
+                      Support the internal team and contribute to organizational process
+                      improvements.
+                    </li>
+                  </ul>
+                </article>
+              </div>
+            </div>
+          </section>
+          <section class="section" id="skills" aria-labelledby="skills-title">
+            <div class="section-inner">
+              <h2 id="skills-title">03. Skills</h2>
+              <div class="section-body skills">
+                <span class="skill reveal">Credit analysis</span
+                ><span class="skill reveal">Risk assessment</span
+                ><span class="skill reveal">Financial analysis</span
+                ><span class="skill reveal">Fraud detection</span
+                ><span class="skill reveal">Investment analysis</span
+                ><span class="skill reveal">Regulatory compliance</span
+                ><span class="skill reveal">FCRA compliance</span
+                ><span class="skill reveal">Data privacy</span
+                ><span class="skill reveal">Financial modeling</span
+                ><span class="skill reveal">Quantitative analysis</span
+                ><span class="skill reveal">Portfolio analysis</span
+                ><span class="skill reveal">Fixed income</span
+                ><span class="skill reveal">Valuation</span
+                ><span class="skill reveal">Due diligence</span
+                ><span class="skill reveal">Dispute resolution</span
+                ><span class="skill reveal">Customer service</span
+                ><span class="skill reveal">Identity verification</span
+                ><span class="skill reveal">Communication</span
+                ><span class="skill reveal">Problem solving</span
+                ><span class="skill reveal">Documentation</span
+                ><span class="skill reveal">Ethics</span>
+              </div>
+            </div>
+          </section>
+          <section class="section" id="education" aria-labelledby="education-title">
+            <div class="section-inner">
+              <h2 id="education-title">04. Education</h2>
+              <div class="section-body entries">
+                <article class="entry reveal">
+                  <p class="muted">Conestoga College • Kitchener, ON • Jan 2024-Aug 2024</p>
+                  <h3>Post Graduation in Financial Planning</h3>
+                </article>
+                <article class="entry reveal">
+                  <p class="muted">Conestoga College • Guelph, ON • Jan 2023-Aug 2023</p>
+                  <h3>Post Graduation in Financial Technology</h3>
+                </article>
+                <article class="entry reveal">
+                  <p class="muted">VNSGU • Surat, India • Aug 2016-June 2019</p>
+                  <h3>Bachelor of Commerce</h3>
+                </article>
+              </div>
+            </div>
+          </section>
+          <section class="section" id="languages" aria-labelledby="languages-title">
+            <div class="section-inner">
+              <h2 id="languages-title">05. Languages</h2>
+              <div class="section-body languages">
+                <article class="language-card reveal">
+                  <h3>English</h3>
+                  <p class="muted">Highly proficient</p>
+                </article>
+                <article class="language-card reveal">
+                  <h3>Hindi</h3>
+                  <p class="muted">Native speaker</p>
+                </article>
+                <article class="language-card reveal">
+                  <h3>French</h3>
+                  <p class="muted">Beginner A1</p>
+                </article>
+                <article class="language-card reveal">
+                  <h3>Gujarati</h3>
+                  <p class="muted">Highly proficient</p>
+                </article>
+              </div>
+            </div>
+          </section>
+          <section class="section" id="references" aria-labelledby="references-title">
+            <div class="section-inner">
+              <h2 id="references-title">06. References</h2>
+              <div class="section-body entries">
+                <article class="reference reveal">
+                  <div class="reference-person">
+                    <img
+                      src="public/assets/images/ArshnoorRef_Img.jpg"
+                      alt="Arshnoor Singh Ahuja"
+                      width="56"
+                      height="56"
+                      loading="lazy"
+                    />
+                    <div>
+                      <h3>Arshnoor Singh Ahuja</h3>
+                      <p class="muted">Financial Analyst, TD Bank</p>
+                    </div>
+                  </div>
+                  <p>
+                    “I’ve worked with Pratik on complex credit disputes and fraud reviews; his
+                    analysis is sharp, documentation crisp, and communication clear. He balances
+                    client empathy with risk discipline, keeping stakeholders aligned and decisions
+                    timely. Reliable, proactive, and privacy conscious, he elevates the team.”
+                  </p>
+                </article>
+                <article class="reference reveal">
+                  <div class="reference-person">
+                    <img
+                      src="public/assets/images/MehulRef_Img.jpeg"
+                      alt="Mehul Jariwala"
+                      width="56"
+                      height="56"
+                      loading="lazy"
+                    />
+                    <div>
+                      <h3>Mehul Jariwala</h3>
+                      <p class="muted">General Manager, CIBC</p>
+                    </div>
+                  </div>
+                  <p>
+                    “Pratik is the calm in high-pressure escalations professional, courteous, and
+                    solutions-focused. He protects customers and the bank through diligent
+                    verification, policy adherence, and timely follow-through. A trusted partner who
+                    improves service quality and resolves issues the right way.”
+                  </p>
+                </article>
+                <article class="reference reveal">
+                  <div class="reference-person">
+                    <img
+                      src="public/assets/images/MihirRef_Img.jpeg"
+                      alt="Mihir Shah"
+                      width="56"
+                      height="56"
+                      loading="lazy"
+                    />
+                    <div>
+                      <h3>Mihir Shah</h3>
+                      <p class="muted">Quality Control Administrator, RBC</p>
+                    </div>
+                  </div>
+                  <p>
+                    “Pratik’s cases are audit-ready accurate, traceable, and compliant with privacy
+                    standards. He embraces feedback, fixes root causes, and collaborates to
+                    strengthen controls. Quality-minded and dependable, he makes oversight easy.”
+                  </p>
+                </article>
+              </div>
+            </div>
+          </section>
+          <section class="section" id="certificates" aria-labelledby="certificates-title">
+            <div class="section-inner">
+              <h2 id="certificates-title">07. Certificates</h2>
+              <div class="section-body entries">
+                <article class="entry reveal">
+                  <p class="muted">June 2020</p>
+                  <h3>Chartered Financial Analyst (Level 2 Cleared)</h3>
+                </article>
+                <article class="entry reveal">
+                  <p class="muted">Pursuing</p>
+                  <h3>Canadian Security Course</h3>
+                </article>
+              </div>
+            </div>
+          </section>
 
-<section class="section" id="contact" aria-labelledby="contact-title"><div class="section-inner"><h2 id="contact-title">08. Contact</h2><div class="section-body contact-list"><div class="contact-item reveal"><p class="muted">Phone</p><a class="contact-link" href="tel:+1 519 731 7551">+1 519 731 7551</a></div><div class="contact-item reveal"><p class="muted">Email</p><a class="contact-link" href="mailto:Pra987amb@Yahoo.com">Pra987amb@Yahoo.com</a></div><div class="contact-item reveal"><p class="muted">Site</p><a class="contact-link" href="https://anderson.dev">anderson.dev</a></div><div class="contact-item reveal"><p class="muted">Socials</p><div class="social-links"><a href="#" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.6" cy="6.7" r="1.1"/></svg></a><a href="#" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6.2" cy="6.6" r="1.6"/><path d="M4.9 9.2h2.7v9.9H4.9zm4.5 0H12v1.4c.6-1 1.6-1.7 3.1-1.7 3 0 3.9 1.9 3.9 4.7v5.5h-2.7v-4.9c0-1.5 0-2.8-1.8-2.8s-2.1 1.3-2.1 2.7v5H9.4z"/></svg></a><a href="#" target="_blank" rel="noopener noreferrer" aria-label="X"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 3h2.9l-6.4 7.3L23 21h-6l-4.7-6.2L6.9 21H4l6.9-7.9L3.5 3h6.2l4.2 5.7zm-1 16h1.6L8.6 4.9H6.9z"/></svg></a></div></div><div class="visitor-message"><p class="muted">Dear visitor,</p><p class="muted">Hey there! Thank you so much for taking a moment to explore my space. Whether you have a question, a project in mind, or just want to chat, my inbox is always open. Don't be a stranger reach out anytime!</p><p class="muted">Sincerely,</p>
-<!--
-  Signature:
-    - No background card (sits directly on the page's black background).
-    - Painted in solid white.
-    - viewBox tightly bounded to the signature glyphs (190 560 1740 930).
-    - The path begins with a 0,0 → 2048,2048 subpath SOLELY to preserve
-      even-odd fill parity so interior loops (the hole in 'a', the eye
-      of 'P', the dot of 'i') render as transparent holes rather than
-      filled dots. The mask is tightly bounded to the glyph region, so
-      that parity-restoring outer subpath never paints visible ink.
-    - Reveal is driven by an SVG <mask> whose rectangle width is animated
-      by JS from 0 → (W + FEATHER), giving a true 0% → 100% sweep with a
-      soft feathered leading edge for a hand-drawn feel.
--->
-<div class="signature-group"><div class="signature-art" id="sig"><svg xmlns="http://www.w3.org/2000/svg" viewBox="190 560 1740 930" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="signature-title"><title id="signature-title">Handwritten signature for Pratik Ambaliya</title><defs><linearGradient id="sweepGrad" x1="0" y1="0" x2="1" y2="0"><stop offset="0.00" stop-color="#fff" stop-opacity="1"/><stop offset="0.80" stop-color="#fff" stop-opacity="1"/><stop offset="1.00" stop-color="#fff" stop-opacity="0"/></linearGradient><mask id="writeMask" maskUnits="userSpaceOnUse" x="190" y="560" width="1740" height="930"><rect id="inkRect" x="190" y="560" width="0" height="930" fill="url(#sweepGrad)"/></mask></defs><g mask="url(#writeMask)" fill="#ffffff"><path fill-rule="evenodd" d="M0,0 L2048,0 L2048,2048 L0,2048 Z M819.741699,1270.654663 C819.854919,1270.793579 819.968079,1270.932495 820.004272,1271.927246 C818.546021,1281.945557 816.948303,1291.864868 818.903137,1302.112305 C822.257629,1319.697632 839.018799,1330.469604 856.163757,1326.213013 C868.068420,1323.257324 878.100281,1316.237061 887.136047,1308.200562 C896.886108,1299.528809 906.424683,1290.539185 915.304382,1280.989746 C925.459045,1270.069092 934.841553,1258.425415 944.444336,1246.999146 C947.926453,1242.855713 951.075928,1238.432739 955.072815,1233.232300 C954.652466,1239.008789 954.994751,1243.708984 953.873474,1248.029297 C949.751770,1263.910278 952.711609,1278.950195 959.116028,1293.405884 C961.330566,1298.404297 964.758423,1303.671997 969.094360,1306.770508 C981.404114,1315.566895 995.383484,1316.502686 1009.279602,1311.035400 C1016.244324,1308.295410 1023.077148,1304.473267 1028.937012,1299.835571 C1039.311768,1291.624756 1049.493286,1282.990723 1058.655151,1273.474121 C1068.786499,1262.950439 1077.682007,1251.237061 1086.513550,1240.756592 C1085.719482,1253.959473 1084.800293,1267.857666 1084.071533,1281.766113 C1083.422729,1294.149658 1087.005493,1305.490723 1094.211426,1315.378174 C1100.961914,1324.640503 1110.394897,1329.930542 1122.111572,1329.954346 C1138.044067,1329.986572 1151.543945,1323.271729 1163.173706,1313.121338 C1173.752075,1303.888428 1183.720215,1293.917114 1193.521606,1283.847046 C1200.774780,1276.395142 1207.367065,1268.296021 1214.180908,1260.421997 C1219.234375,1254.582153 1224.170654,1248.640869 1229.684692,1242.123413 C1229.856812,1243.780762 1230.148560,1244.501831 1229.957397,1245.056641 C1225.435181,1258.180054 1226.400146,1270.931641 1230.829834,1284.070801 C1236.928101,1302.158936 1256.425781,1308.037598 1270.868652,1305.539551 C1286.648438,1302.810059 1299.761108,1294.293335 1311.974854,1284.431519 C1318.391968,1279.249878 1324.590942,1273.756958 1330.527466,1268.030396 C1340.514526,1258.396484 1350.283203,1248.532104 1360.006470,1238.630127 C1365.302246,1233.236938 1370.316040,1227.567017 1375.457031,1222.021851 C1375.852417,1222.233032 1376.247925,1222.444336 1376.643433,1222.655640 C1375.094360,1227.310303 1373.408691,1231.924683 1372.022217,1236.627197 C1367.950928,1250.437012 1363.901611,1264.254639 1360.032715,1278.121826 C1357.366943,1287.676392 1354.784058,1297.266113 1352.593506,1306.937500 C1350.689087,1315.346680 1349.430298,1323.794678 1353.946655,1332.046997 C1356.896851,1337.437988 1365.124634,1341.362427 1371.067017,1339.451538 C1379.433838,1336.760864 1383.520142,1329.865112 1386.941650,1322.602173 C1391.778931,1312.333984 1396.221680,1301.880493 1400.868652,1291.522217 C1405.899658,1280.307861 1410.886108,1269.072388 1416.061157,1257.924438 C1418.749756,1252.132690 1421.636353,1246.417725 1424.728516,1240.831299 C1429.849487,1231.579590 1435.208862,1222.459839 1440.154663,1213.830688 C1453.368774,1225.666748 1466.519775,1237.998413 1480.279297,1249.609009 C1492.993896,1260.337891 1507.377441,1268.645386 1523.211792,1273.867676 C1534.919312,1277.728760 1546.955322,1280.721680 1559.515747,1279.994995 C1570.510132,1279.359009 1581.575195,1279.231812 1592.468262,1277.805054 C1599.865112,1276.836182 1607.155640,1274.404541 1614.253174,1271.935791 C1630.213745,1266.383911 1646.338379,1261.123047 1661.811279,1254.398193 C1678.185303,1247.281372 1694.150879,1239.094238 1709.801025,1230.477661 C1726.667847,1221.191040 1743.085815,1211.064331 1759.466675,1200.927612 C1772.330566,1192.967163 1784.869751,1184.479004 1797.497559,1176.140991 C1808.449341,1168.909546 1819.529785,1161.847534 1830.183350,1154.195679 C1846.128540,1142.743042 1861.724365,1130.805054 1877.516113,1119.137573 C1891.046387,1109.141113 1904.692139,1099.300293 1918.160400,1089.221924 C1920.309570,1087.613770 1921.795044,1085.118774 1923.587280,1083.033691 C1923.225708,1082.588013 1922.864014,1082.142334 1922.502441,1081.696777 C1921.103271,1082.217407 1919.540283,1082.495239 1918.336792,1083.306396 C1915.223389,1085.404419 1912.355469,1087.867676 1909.235352,1089.954834 C1894.671875,1099.696899 1880.042480,1109.340454 1865.464233,1119.060547 C1856.210938,1125.230469 1847.176270,1131.746948 1837.736572,1137.614258 C1825.787231,1145.041504 1813.594849,1152.087280 1801.383301,1159.080933 C1783.136353,1169.531128 1764.915283,1180.039917 1746.428711,1190.053833 C1732.246582,1197.736084 1717.772827,1204.903076 1703.241211,1211.910278 C1690.171753,1218.212280 1677.076416,1224.575195 1663.570557,1229.825684 C1649.868286,1235.152222 1635.770386,1239.578125 1621.615356,1243.583618 C1611.578857,1246.423706 1601.202026,1248.164551 1590.893188,1249.897339 C1585.407349,1250.819336 1579.735840,1251.051270 1574.161377,1250.938721 C1564.774658,1250.749146 1555.136353,1251.233521 1546.082397,1249.249634 C1534.062744,1246.616211 1523.069580,1240.784790 1512.604614,1234.043335 C1499.543823,1225.629517 1488.452637,1214.949707 1477.114868,1204.531128 C1473.635010,1201.333374 1474.144531,1200.767212 1478.540283,1198.738770 C1488.524780,1194.131714 1498.579834,1189.585327 1508.154297,1184.209351 C1517.015869,1179.233398 1525.620483,1173.649414 1533.733765,1167.531372 C1542.753540,1160.729858 1551.833008,1153.718506 1559.518677,1145.516602 C1567.588989,1136.904541 1574.383179,1127.010254 1581.090942,1117.234131 C1586.870972,1108.810181 1589.729126,1099.120117 1588.927856,1088.804321 C1588.119629,1078.399292 1583.025513,1071.546753 1574.976440,1070.390381 C1567.732422,1069.349609 1559.830200,1070.277344 1552.634521,1072.037720 C1535.993530,1076.109131 1523.462524,1087.609009 1510.715332,1098.088501 C1500.164917,1106.762207 1490.537842,1116.646240 1481.104614,1126.567261 C1471.912842,1136.234253 1463.245728,1146.431885 1454.793579,1156.760864 C1446.835938,1166.485107 1439.238281,1176.526001 1431.917603,1186.739624 C1428.122192,1192.034912 1425.224243,1197.980225 1422.002930,1203.678345 C1418.794800,1209.353271 1415.689331,1215.086060 1412.538818,1220.793457 C1412.694092,1217.239990 1413.569092,1213.924561 1414.732422,1210.713623 C1418.546997,1200.185913 1422.409790,1189.675049 1426.362549,1179.198730 C1429.675171,1170.418945 1432.015015,1161.019775 1436.782959,1153.096924 C1445.415649,1138.752197 1455.397461,1125.204712 1465.075806,1111.508057 C1474.878906,1097.634888 1485.178101,1084.111328 1494.930542,1070.203613 C1506.797729,1053.279907 1518.562744,1036.274048 1529.920654,1019.006714 C1540.254517,1003.296082 1550.089355,987.252747 1559.932373,971.225891 C1564.381836,963.981018 1568.397339,956.464111 1572.470703,948.994812 C1581.602051,932.251465 1591.004761,915.641968 1599.604614,898.627930 C1605.714355,886.540405 1610.459961,873.771545 1616.234375,861.504456 C1624.014526,844.976257 1629.616821,827.702576 1633.855591,810.031372 C1636.308716,799.804382 1637.026001,789.308289 1636.162598,778.606934 C1634.883057,762.749634 1616.560303,752.664795 1602.765503,760.718872 C1590.335938,767.975830 1579.828247,777.576233 1570.973145,788.647461 C1558.951904,803.677246 1547.491333,819.207947 1536.641724,835.104919 C1528.703247,846.736267 1521.843994,859.142761 1515.044556,871.501343 C1508.889771,882.688293 1503.414551,894.252075 1497.737793,905.698242 C1492.558594,916.141174 1487.379883,926.588196 1482.452148,937.150635 C1479.274658,943.961426 1476.613770,951.011292 1473.609009,957.905029 C1468.779663,968.984680 1463.810547,980.003418 1458.989868,991.086731 C1455.347290,999.461914 1451.713501,1007.845276 1448.310059,1016.319031 C1443.488037,1028.323730 1438.851074,1040.403198 1434.198486,1052.475098 C1432.433472,1057.054932 1430.904419,1061.725342 1429.162842,1066.314697 C1424.475220,1078.667969 1419.643555,1090.967163 1415.037476,1103.350586 C1411.360352,1113.236938 1407.900146,1123.204712 1404.400757,1133.156372 C1401.226440,1142.183960 1398.048340,1151.211792 1395.023071,1160.289917 C1392.404419,1168.147461 1390.603882,1176.384766 1385.368652,1183.063110 C1379.410278,1190.663818 1373.520020,1198.372925 1366.945679,1205.424683 C1351.778198,1221.693726 1336.530396,1237.915405 1320.658081,1253.486572 C1314.235107,1259.787720 1306.469482,1264.986816 1298.630249,1269.497925 C1291.666016,1273.505493 1283.851685,1276.138794 1276.225586,1278.853882 C1271.735840,1280.452271 1266.109131,1277.515259 1265.197754,1272.749146 C1264.167114,1267.359375 1263.366821,1261.417969 1264.578735,1256.207642 C1267.578125,1243.313232 1271.287842,1230.526611 1275.644409,1218.021484 C1279.834717,1205.993408 1285.149902,1194.354126 1290.054199,1182.578735 C1294.978271,1170.755615 1299.980225,1158.964966 1304.997803,1147.181030 C1307.396484,1141.547852 1305.450317,1134.949707 1300.603394,1130.869751 C1289.896851,1121.857910 1277.101685,1125.734985 1271.249390,1135.300171 C1263.200195,1148.455688 1256.809570,1162.649414 1250.066406,1176.571533 C1246.241821,1184.467651 1244.004883,1193.241577 1239.482910,1200.663452 C1233.611694,1210.299683 1226.512573,1219.257812 1219.341187,1228.015869 C1207.940918,1241.938477 1196.351074,1255.734497 1184.234009,1269.030396 C1177.608643,1276.300537 1169.657471,1282.350464 1162.447632,1289.103882 C1155.149536,1295.940063 1147.371094,1301.657959 1137.159058,1303.482056 C1130.328857,1304.702271 1125.482544,1301.619141 1123.244629,1296.625854 C1118.396973,1285.809448 1118.946655,1274.152832 1120.356445,1263.113770 C1122.387451,1247.211060 1126.489868,1231.553833 1130.078979,1215.876709 C1131.966187,1207.633057 1134.418213,1199.497681 1137.018066,1191.443481 C1140.113770,1181.854004 1143.671875,1172.414429 1146.974609,1162.890869 C1151.423340,1150.063354 1155.342407,1137.027222 1160.365112,1124.430054 C1166.037109,1110.204956 1172.734009,1096.390747 1178.885742,1082.354126 C1184.210693,1070.203857 1189.301880,1057.950684 1194.673828,1045.821533 C1198.998779,1036.056274 1203.229858,1026.215454 1208.273071,1016.821899 C1209.854004,1013.877502 1210.352905,1009.047668 1215.823853,1008.935120 C1240.831055,1008.420898 1265.837158,1007.779602 1290.835693,1006.945068 C1300.344849,1006.627563 1309.836182,1005.716614 1319.328857,1004.987671 C1327.164551,1004.385925 1335.060791,1004.100891 1342.804199,1002.877563 C1355.067993,1000.940063 1367.171387,997.975159 1379.442749,996.099670 C1397.072388,993.405212 1413.606689,987.721008 1429.216919,979.261169 C1433.464600,976.959167 1437.403320,974.087341 1441.483887,971.477051 C1441.294800,970.764221 1441.105835,970.051453 1440.916748,969.338684 C1439.024780,969.338684 1437.081543,969.055542 1435.249878,969.387634 C1427.315674,970.826538 1419.448853,972.661926 1411.491577,973.942932 C1401.714111,975.516968 1391.863159,976.629700 1382.058350,978.040955 C1373.385376,979.289307 1364.762573,980.946350 1356.061523,981.922668 C1347.096069,982.928711 1338.068726,983.425476 1329.058105,983.972900 C1316.559692,984.732178 1304.057861,985.697388 1291.546143,985.912781 C1272.552612,986.239746 1253.549072,985.968994 1234.550171,986.040100 C1232.475952,986.047852 1230.409180,986.828613 1228.328735,986.887085 C1226.771851,986.930847 1224.405151,986.889526 1223.833008,985.982056 C1223.116455,984.845398 1223.413452,982.579346 1224.055542,981.152954 C1230.083252,967.761292 1236.418213,954.507080 1242.386475,941.089539 C1248.610596,927.097229 1254.301636,912.864990 1260.673706,898.942566 C1263.937500,891.811157 1260.428589,885.968811 1255.989868,882.619995 C1251.604736,879.311646 1241.491699,880.640991 1238.064575,884.880615 C1234.602051,889.164124 1231.306763,893.619873 1228.335083,898.254639 C1223.492432,905.807617 1218.756226,913.446228 1214.369263,921.269714 C1208.435059,931.852722 1202.808594,942.610718 1197.171631,953.357361 C1192.350098,962.549805 1187.601440,971.783813 1183.027588,981.101013 C1181.439819,984.334839 1179.721558,986.143005 1175.666626,986.100159 C1154.844971,985.880249 1134.018921,985.870911 1113.196289,986.038452 C1096.442749,986.173279 1079.671631,986.263733 1062.946289,987.117371 C1047.924438,987.884216 1032.887573,989.162048 1017.981201,991.145325 C1004.571411,992.929443 991.223022,995.522217 978.047791,998.612183 C967.507446,1001.084106 956.953186,1004.086670 946.992859,1008.257385 C938.793213,1011.690918 931.158386,1016.772644 923.914673,1022.010925 C921.679199,1023.627441 918.187073,1027.152466 921.016663,1031.531250 C924.328125,1036.655518 928.323547,1037.011475 934.716675,1033.832886 C942.099915,1030.162109 949.666138,1026.623657 957.512573,1024.185303 C965.620178,1021.665710 974.118042,1020.292053 982.519714,1018.852478 C996.890076,1016.390137 1011.261047,1013.741455 1025.739746,1012.158752 C1038.662720,1010.746094 1051.726807,1010.540466 1064.737671,1010.038086 C1077.650024,1009.539490 1090.572266,1009.158020 1103.492920,1009.043884 C1122.157349,1008.879089 1140.824219,1009.001709 1159.490112,1009.001709 C1162.933594,1009.001709 1166.377197,1009.001770 1169.802734,1009.001770 C1169.895264,1009.950928 1170.142578,1010.537109 1169.962524,1010.924866 C1164.312988,1023.088379 1158.450684,1035.156128 1152.979736,1047.398804 C1145.824707,1063.409912 1138.730957,1079.457153 1132.071655,1095.678101 C1126.970703,1108.103638 1122.575439,1120.819458 1117.880859,1133.411499 C1113.101685,1146.230225 1108.038330,1158.953979 1103.668579,1171.911133 C1100.303589,1181.889404 1097.881714,1192.183472 1094.878174,1202.288940 C1094.433838,1203.783936 1093.136108,1205.043701 1092.161987,1206.359741 C1088.791504,1210.913574 1085.470215,1215.506958 1081.982788,1219.970459 C1075.052002,1228.841064 1068.524780,1238.097778 1060.914062,1246.349487 C1050.272583,1257.887207 1039.162231,1269.066406 1025.830688,1277.671143 C1017.651978,1282.950073 1009.569458,1288.825928 999.070862,1286.840088 C996.451904,1286.344727 993.430664,1284.427856 991.918518,1282.246338 C985.487488,1272.968628 987.515991,1262.106079 988.334473,1252.058716 C989.159790,1241.928589 992.635071,1232.006470 995.045959,1222.016602 C996.392578,1216.436523 997.603699,1210.788086 999.487305,1205.383667 C1001.251892,1200.320557 1003.958191,1195.594482 1006.011780,1190.621704 C1011.130310,1178.227173 1016.098816,1165.770874 1021.156555,1153.351074 C1023.556091,1147.458618 1022.071350,1138.516235 1017.632996,1135.235229 C1012.145386,1131.178711 1005.178345,1130.011719 998.805969,1134.863037 C995.774414,1137.170898 993.480652,1140.448120 990.784058,1143.360474 C989.626892,1142.095337 988.727295,1141.318848 988.078674,1140.370605 C981.610718,1130.914185 972.632141,1125.772461 961.256104,1125.026733 C945.642273,1124.003052 931.449280,1128.917236 918.622314,1137.140869 C908.517639,1143.619141 899.190186,1151.343506 889.729431,1158.783813 C877.348083,1168.521240 867.200500,1180.403687 858.004028,1193.109131 C847.557617,1207.541504 837.596313,1222.343140 826.714355,1236.436035 C817.501526,1248.367310 807.668884,1259.883179 797.385132,1270.905884 C787.777893,1281.203613 777.297302,1290.696655 767.051514,1300.385498 C757.113708,1309.783081 746.651001,1318.609253 734.424927,1324.896118 C728.826965,1327.774658 723.443909,1331.734497 716.471252,1331.057251 C713.476990,1330.766235 711.779968,1329.474243 711.002869,1326.647339 C708.523376,1317.627930 710.333252,1308.691895 712.596558,1300.125366 C714.898865,1291.411865 718.642639,1283.050537 722.110779,1274.682373 C725.233032,1267.148926 728.550110,1259.666626 732.294617,1252.427368 C738.093323,1241.216919 744.448853,1230.295898 750.346558,1219.134888 C756.835449,1206.855225 763.217896,1194.514282 769.369751,1182.063354 C773.445068,1173.815063 773.375977,1161.707886 766.521606,1155.803223 C759.522766,1149.774170 751.638794,1149.838013 743.918091,1151.776489 C731.998596,1154.769287 720.491272,1159.371582 708.624084,1162.614136 C697.498230,1165.653931 686.166931,1168.109985 673.930115,1166.695312 C676.504272,1161.032715 679.146118,1155.568237 681.493591,1149.979980 C685.529541,1140.372070 689.104675,1130.618896 687.990173,1119.892700 C687.372803,1113.951294 684.619690,1109.209229 679.434692,1106.167969 C671.922913,1101.761841 664.450134,1103.729126 657.854431,1107.834961 C643.357605,1116.859009 633.818298,1129.829468 628.897156,1146.309937 C624.832092,1159.923340 629.218323,1172.424805 641.327271,1180.035889 C643.729065,1181.545532 644.783936,1183.223755 643.035767,1186.129517 C638.585876,1193.525757 634.596985,1201.205200 630.009766,1208.511597 C624.359375,1217.511353 618.325378,1226.272095 612.389099,1235.090210 C608.256409,1241.229614 604.008911,1247.291626 599.812683,1253.388184 C600.000244,1253.873047 600.187805,1254.357910 600.375366,1254.842651 C602.147095,1254.498291 604.226013,1254.635498 605.641785,1253.732788 C616.463501,1246.832520 626.433167,1238.843140 634.023865,1228.388062 C642.670349,1216.478760 651.089722,1204.393066 659.201660,1192.115723 C661.018066,1189.366699 662.806702,1188.585815 665.564392,1189.029419 C681.687866,1191.622925 697.542419,1189.579102 713.304932,1186.249512 C717.803406,1185.299194 722.209778,1183.912842 727.492981,1182.503906 C719.390930,1196.448608 711.869507,1209.097046 704.654480,1221.917725 C699.948730,1230.279785 695.182007,1238.671265 691.352417,1247.446777 C686.256714,1259.123779 681.702820,1271.068481 677.538025,1283.113159 C671.702515,1299.989136 668.421387,1317.065552 673.896729,1334.957520 C677.601929,1347.065430 692.887451,1359.011108 705.366455,1357.891846 C718.522095,1356.711670 731.001160,1352.893799 741.529114,1344.787231 C753.578735,1335.508911 765.717529,1326.161743 776.586182,1315.579590 C791.479492,1301.078857 805.213745,1285.387573 819.741699,1270.654663 M394.479492,1208.012695 C393.328339,1210.623291 391.968414,1213.163818 391.063690,1215.857178 C387.813416,1225.533081 384.831635,1235.299927 381.535278,1244.959595 C376.631348,1259.330078 371.549896,1273.640015 366.537109,1287.973267 C361.521851,1302.313721 356.268097,1316.575806 351.538635,1331.009644 C346.111206,1347.573975 341.003845,1364.247437 336.040039,1380.957397 C333.664246,1388.955322 332.337524,1397.271729 329.837189,1405.224365 C324.832031,1421.144043 321.373260,1437.202393 321.897522,1454.036011 C322.104279,1460.675903 322.878632,1466.718506 326.727905,1472.486694 C331.052521,1478.967285 341.716705,1483.449707 349.203491,1481.409424 C359.375275,1478.637329 366.908661,1472.562988 372.539948,1463.904175 C373.473969,1462.467896 373.865906,1460.679321 374.508331,1459.053467 C372.674896,1458.857056 370.755157,1458.222046 369.027283,1458.562134 C366.064056,1459.145142 363.068665,1460.026001 360.362488,1461.346680 C356.250214,1463.353882 354.773254,1460.852173 354.129150,1457.806519 C353.590179,1455.258179 353.494110,1452.359619 354.141296,1449.859253 C357.953217,1435.131592 361.918213,1420.440186 366.074280,1405.805664 C369.220734,1394.726196 372.473419,1383.663574 376.140625,1372.748779 C380.785919,1358.922729 385.973541,1345.280151 390.789581,1331.510254 C395.541077,1317.924805 400.016266,1304.242432 404.805084,1290.670410 C409.627747,1277.002563 414.596405,1263.384277 419.668884,1249.807007 C424.521881,1236.817139 429.653748,1223.931885 434.547699,1210.957031 C439.771790,1197.106934 444.798035,1183.182129 450.032013,1169.335815 C453.245789,1160.833862 456.453461,1152.311890 460.204468,1144.044312 C461.052979,1142.174072 463.991333,1140.709106 466.241150,1140.141724 C469.844238,1139.232666 473.724335,1139.487549 477.401703,1138.795288 C488.804901,1136.648804 500.210602,1134.480835 511.535309,1131.961426 C525.630066,1128.825562 539.803894,1125.876343 553.651184,1121.842896 C568.508728,1117.515381 583.278015,1112.648804 597.633545,1106.889893 C618.380432,1098.567017 638.919983,1089.656494 659.170593,1080.189331 C675.387634,1072.607910 691.387939,1064.417603 706.855957,1055.417358 C724.481567,1045.161743 741.679321,1034.104614 758.556824,1022.650024 C772.212769,1013.381897 785.462158,1003.430481 798.264404,993.011230 C812.181885,981.684326 825.980591,970.080566 838.732605,957.485291 C855.363770,941.058655 871.630554,924.142273 886.692444,906.287842 C897.685547,893.256531 906.974304,878.682495 916.107910,864.218506 C924.478516,850.962891 932.125610,837.185791 939.169434,823.174927 C946.486633,808.620300 952.418152,793.391602 955.296631,777.222412 C957.392639,765.449219 960.176941,753.660522 960.750244,741.786804 C961.593506,724.322388 961.005737,706.894714 956.276245,689.632812 C952.593750,676.192078 947.411804,663.720825 939.984192,652.097778 C929.862793,636.259460 917.263245,622.562988 901.996338,611.673584 C887.495422,601.330505 871.641907,593.196777 854.536438,588.025146 C842.882507,584.501709 831.051819,581.288940 819.082703,579.158813 C806.908386,576.992249 794.495422,575.768250 782.135925,575.148987 C768.837097,574.482666 755.479004,574.996826 742.146790,574.999512 C738.813843,575.000183 735.454285,574.744812 732.152771,575.071106 C719.972900,576.274902 707.790771,577.504089 695.651184,579.051208 C685.684204,580.321411 675.724976,581.785828 665.857422,583.664185 C656.551147,585.435669 647.362488,587.831665 638.134277,590.004700 C629.063110,592.140686 619.900818,593.978882 610.968994,596.597229 C596.698669,600.780518 582.561646,605.426453 568.414795,610.019958 C558.544922,613.224854 548.643677,616.382874 538.953064,620.077454 C526.238342,624.924927 513.635742,630.090881 501.136810,635.472534 C489.880157,640.319458 478.779755,645.539307 467.701294,650.786621 C458.465179,655.161194 449.062836,659.304199 440.259796,664.449158 C421.660126,675.319885 403.226898,686.500854 385.065521,698.087646 C371.463379,706.765686 358.400665,716.288391 345.084229,725.415283 C321.206207,741.780823 299.674042,760.995422 278.807434,780.913208 C267.653503,791.559937 257.173187,802.994995 247.174118,814.742676 C239.312881,823.978577 232.690765,834.265198 225.454849,844.038208 C214.206573,859.230469 205.679962,875.821228 199.681412,893.732239 C196.378387,903.594543 193.342087,913.459351 193.936890,924.106201 C194.335510,931.241516 193.076492,938.625061 194.459534,945.516113 C197.028931,958.318176 203.748123,969.293457 213.631165,977.919250 C217.486435,981.284180 222.105865,984.073608 229.074585,983.933777 C227.757721,981.220276 226.945770,979.270752 225.901184,977.455017 C223.993515,974.139160 221.834244,970.965515 219.981125,967.621033 C213.872009,956.595886 214.910522,944.504395 215.071335,932.597351 C215.119217,929.051575 215.582870,925.393494 216.588333,922.004028 C218.439102,915.764893 220.636856,909.608521 223.050919,903.561768 C225.880569,896.474121 228.402191,889.124634 232.295349,882.630920 C239.184586,871.140076 246.387680,859.726868 254.596649,849.164978 C265.424255,835.233948 276.967712,821.803894 288.934204,808.832642 C296.988312,800.102356 306.056915,792.245178 315.121277,784.525330 C327.203552,774.235229 339.281158,763.843445 352.153015,754.598450 C373.503937,739.263428 395.299530,724.523132 417.276764,710.094177 C429.364349,702.158081 442.014313,695.014038 454.761658,688.166138 C466.842346,681.676331 479.325623,675.921570 491.735321,670.062683 C502.548065,664.957825 513.431946,659.987671 524.424377,655.285095 C531.629395,652.202820 539.045410,649.595459 546.434509,646.965332 C560.729309,641.877197 574.978821,636.632996 589.423462,632.003662 C601.320496,628.190735 613.446899,625.078552 625.517944,621.827942 C638.058167,618.450989 650.543518,614.731567 663.256042,612.170776 C676.586914,609.485474 690.119202,607.656921 703.635925,606.072876 C720.836609,604.057129 738.085693,602.288818 755.362610,601.158752 C764.055237,600.590210 772.881714,601.352417 781.600952,602.076599 C794.105957,603.115234 806.638489,604.214355 819.029907,606.126038 C832.518860,608.207214 845.451599,612.644836 857.794189,618.446228 C868.991699,623.709473 879.280579,630.320190 888.621033,638.714844 C896.006897,645.352722 902.561584,652.441528 907.340515,660.990417 C910.980408,667.501831 914.483765,674.316833 916.533569,681.432922 C919.151855,690.522705 921.319153,700.001709 921.752441,709.401917 C922.439209,724.300659 922.246033,739.182434 919.289978,754.118042 C916.147095,769.997009 911.769897,785.351135 905.302185,800.046326 C899.773621,812.607727 893.721863,825.019165 886.849854,836.887939 C878.799316,850.792297 870.581848,864.802124 860.679688,877.383301 C847.055054,894.693848 832.287598,911.189392 817.068787,927.136108 C802.965942,941.913635 788.310974,956.330750 772.649475,969.410217 C754.898804,984.234253 736.091370,997.870728 717.119751,1011.131226 C701.043518,1022.367798 684.462891,1033.012085 667.397522,1042.667358 C650.739929,1052.091797 633.353210,1060.293091 615.971436,1068.351440 C602.079041,1074.792236 587.913574,1080.769897 573.505859,1085.940430 C556.526611,1092.033813 539.297668,1097.549194 521.911987,1102.357056 C506.595978,1106.592651 490.917725,1109.520630 475.388763,1112.978149 C474.454987,1113.186157 473.427094,1112.971313 472.442993,1112.953125 C472.519196,1111.892212 472.394531,1110.766113 472.713898,1109.784302 C473.355713,1107.811646 474.271606,1105.930054 475.018463,1103.989258 C479.499390,1092.346069 483.827362,1080.641479 488.481415,1069.068115 C491.756195,1060.924561 495.619293,1053.018799 498.950684,1044.896484 C505.073303,1029.969238 510.882568,1014.913269 517.035095,999.998657 C523.904602,983.346069 530.955811,966.767639 538.031677,950.201233 C543.552246,937.276184 549.228149,924.417480 554.841431,911.532043 C559.225525,901.468384 563.599854,891.400330 568.016052,881.350769 C570.892944,874.804199 573.717041,868.230286 576.777344,861.769226 C582.443359,849.807007 588.259216,837.915710 594.024292,826.000549 C597.634827,818.538452 601.140259,811.021973 604.917908,803.645264 C611.034973,791.700256 617.234131,779.794678 623.591675,767.976318 C629.291992,757.379700 635.254272,746.924072 641.097839,736.404541 C644.821655,729.700989 648.807678,723.124695 652.160522,716.240173 C654.187805,712.077515 652.698792,708.198120 648.904663,705.418213 C644.517639,702.203796 638.164734,702.967834 633.555237,708.099426 C626.470886,715.986023 619.499207,724.028381 613.151978,732.507812 C606.415283,741.507507 600.072571,750.858459 594.259460,760.479980 C585.507263,774.966003 577.177490,789.717346 569.013733,804.546082 C560.064819,820.800903 551.269775,837.150391 542.851746,853.684692 C535.402710,868.315918 528.529236,883.241394 521.466980,898.068054 C516.381592,908.744446 511.252197,919.404175 506.417084,930.194336 C500.678864,942.999939 495.254120,955.945801 489.655365,968.814331 C487.052338,974.797302 484.327759,980.727356 481.713257,986.705444 C475.206024,1001.584412 468.683624,1016.457092 462.260803,1031.372559 C458.862823,1039.263428 455.630493,1047.226562 452.376038,1055.178467 C447.897797,1066.120605 443.296875,1077.016968 439.075134,1088.057861 C435.775940,1096.685913 433.162811,1105.578491 429.789307,1114.174683 C429.124756,1115.867920 426.389740,1117.818237 424.591919,1117.835815 C400.481659,1118.070923 376.396790,1118.900513 353.863098,1107.203003 C341.307312,1100.685181 334.725311,1088.817871 338.349213,1075.089966 C341.113495,1064.618530 346.220093,1055.305176 353.311310,1047.356934 C367.985901,1030.908569 384.997925,1017.188843 404.017242,1005.962952 C410.945343,1001.873840 417.680756,997.450928 424.399292,993.021484 C425.520752,992.282104 426.104614,990.727478 426.936890,989.549561 C425.306885,989.039856 423.383423,987.701782 422.095642,988.158020 C415.013062,990.667114 407.868988,993.179443 401.159668,996.521118 C392.461700,1000.853271 383.908600,1005.586548 375.738190,1010.839355 C365.632782,1017.336243 355.289368,1023.754822 346.322754,1031.653442 C336.280792,1040.499512 327.330444,1050.607910 320.726654,1062.613647 C315.005615,1073.014404 314.150604,1084.043457 315.320007,1095.311768 C315.781677,1099.760376 317.555511,1104.473267 319.999512,1108.244385 C329.222504,1122.475830 343.064056,1130.519165 358.907471,1135.414185 C374.175873,1140.131592 389.790344,1142.812256 405.817810,1143.064209 C409.828094,1143.127075 413.826172,1143.965820 417.907990,1144.457397 C413.579346,1156.038086 409.225464,1167.494873 405.017029,1179.004883 C401.574432,1188.420288 398.305267,1197.899170 394.479492,1208.012695 M1292.932129,1071.503418 C1290.507568,1078.533447 1292.451416,1084.321167 1298.985352,1089.527466 C1301.977173,1091.911255 1310.201416,1091.201538 1314.682129,1088.939331 C1323.131348,1084.673340 1329.033691,1077.790527 1334.018433,1070.211426 C1337.245728,1065.304443 1338.091187,1055.733398 1333.875488,1050.255371 C1326.818115,1041.084839 1314.531494,1042.713745 1307.149170,1048.448120 C1299.896606,1054.081543 1294.964233,1061.493530 1292.932129,1071.503418 z"/></g></svg></div><p class="signature-name">Pratik Ambaliya</p></div>
-</div></div></div></section>
-</div>
-</main>
-<footer class="site-footer"><p class="footer-title reveal rise-reveal" data-fit aria-label="Thanks for being here"><span>Thanks</span><span>for being</span><span>here</span></p></footer>
-</div>
-<script>
-/* Standalone animation controller. No frameworks or build tools required. */
-(function(){
-'use strict';
-const motionQuery=window.matchMedia('(prefers-reduced-motion: reduce)');
-const phoneQuery=window.matchMedia('(max-width: 809px)');
-const animations=new Set();
-function animate(el,keyframes,options){if(motionQuery.matches||!el.animate)return;const animation=el.animate(keyframes,options);animations.add(animation);animation.finished.then(()=>animations.delete(animation)).catch(()=>animations.delete(animation));}
-/* Text: word staggering (.07s), line staggering, and optional blur. */
-document.querySelectorAll('[data-text-animate]').forEach(el=>{
- if(phoneQuery.matches&&el.classList.contains('hero-quote'))return;
- const kind=el.dataset.textAnimate,delay=Number(el.dataset.delay||0),duration=Number(el.dataset.duration||400),blur=Number(el.dataset.blur||0);
- if(motionQuery.matches)return;
- const source=el.textContent.trim();el.setAttribute('aria-label',source);
- const pieces=kind==='word'?source.split(/(\s+)/):[source];el.textContent='';let index=0;
- pieces.forEach(piece=>{if(/^\s+$/.test(piece)){el.append(document.createTextNode(piece));return;}const token=document.createElement('span');token.className=kind==='word'?'text-token':'text-line';token.textContent=piece;token.setAttribute('aria-hidden','true');el.append(token);animate(token,[{opacity:0,transform:'translateY(10px)',filter:'blur('+blur+'px)'},{opacity:1,transform:'translateY(0)',filter:'blur(0px)'}],{duration,delay:delay+index++*70,easing:'cubic-bezier(.22,1,.36,1)',fill:'both'});});
-});
-/* Hero heading mount: 30px vertical entrance over one second. */
-const title=document.querySelector('.hero-title');animate(title,[{opacity:0,transform:'translateY(30px)'},{opacity:1,transform:'translateY(0)'}],{duration:1000,easing:'cubic-bezier(.22,1,.36,1)',fill:'both'});if(phoneQuery.matches){title.style.fontSize='2rem';title.style.letterSpacing='.5em';title.style.textAlign='center';}else{title.style.textAlign='left';}
-/* On-view fades: observed content cards use a 50% visibility threshold. */
-const targets=document.querySelectorAll('.reveal');
-if(!motionQuery.matches&&'IntersectionObserver' in window){document.documentElement.classList.add('js');const halfObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');halfObserver.unobserve(entry.target);}}),{threshold:.5});const anyObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');anyObserver.unobserve(entry.target);}}),{threshold:0});targets.forEach(el=>(el.dataset.threshold==='0'?anyObserver:halfObserver).observe(el));}else{targets.forEach(el=>el.classList.add('is-visible'));}
-/* Signature reveal.
-   - Auto-triggers when the signature's vertical center crosses the viewport center.
-   - No replay button. Clicking the signature itself still replays (handy during dev).
-   - Reveal is a true 0% → 100% sweep via mask-rect width = t * (W + FEATHER),
-     so at t=0 nothing is visible and at t=1 the entire glyph is painted.
-   - DURATION is intentionally slow (8s) for a leisurely, hand-drawn feel. */
-(function(){
- const sig=document.getElementById('sig');if(!sig)return;
- const inkRect=sig.querySelector('#inkRect');if(!inkRect)return;
- const W=1740,FEATHER=220,DURATION=8000;
- let started=false,startTime=null,rafId=null,ticking=false,prevDist=null;
- function ease(t){
-   // Piecewise handwriting rhythm: fast through the long P flourish (0..0.30
-   // of t covers the first 42% of the glyph), slower across the dense
-   // "atik" letters (0.30..1.0 covers the remaining 58%). A tiny sinusoid
-   // adds micro-hesitations without ever reversing direction.
-   let p;
-   if(t<.3){const u=t/.3;p=.42*(1-Math.pow(1-u,2));}
-   else{const u2=(t-.3)/.7,eio=u2<.5?2*u2*u2:1-Math.pow(-2*u2+2,2)/2;p=.42+eio*.58;}
-   return Math.max(0,Math.min(1,p+.012*Math.sin(t*Math.PI*4.5)));
- }
- function frame(now){
-   if(startTime===null)startTime=now;
-   const raw=Math.min(1,(now-startTime)/DURATION);
-   const t=ease(raw);
-   inkRect.setAttribute('width',String(t*(W+FEATHER)));
-   if(raw<1)rafId=requestAnimationFrame(frame);
- }
- function play(){
-   if(started)return;started=true;startTime=null;
-   if(rafId)cancelAnimationFrame(rafId);
-   inkRect.setAttribute('width','0');
-   if(motionQuery.matches){inkRect.setAttribute('width',String(W+FEATHER));return;}
-   rafId=requestAnimationFrame(frame);
- }
- function replay(){
-   // Allow re-triggering only via explicit click on the signature.
-   if(rafId)cancelAnimationFrame(rafId);
-   started=true;startTime=null;inkRect.setAttribute('width','0');
-   if(motionQuery.matches){inkRect.setAttribute('width',String(W+FEATHER));return;}
-   rafId=requestAnimationFrame(frame);
- }
- function check(){
-   ticking=false;if(started)return;
-   const r=sig.getBoundingClientRect(),vhCenter=window.innerHeight/2;
-   const sigCenter=(r.top+r.bottom)/2,dist=sigCenter-vhCenter;
-   const tol=Math.max(16,Math.min(48,r.height*.25));
-   const crossed=prevDist!==null&&((prevDist<=0&&dist>=0)||(prevDist>=0&&dist<=0));
-   prevDist=dist;
-   if(Math.abs(dist)<=tol||crossed)play();
- }
- function schedule(){if(!ticking){ticking=true;requestAnimationFrame(check);}}
- sig.addEventListener('click',replay);
- window.addEventListener('scroll',schedule,{passive:true});
- window.addEventListener('resize',schedule,{passive:true});
- window.addEventListener('load',schedule,{once:true});
- schedule();
-})();
-/* Portrait tracks scroll progress continuously; control state changes independently. */
-const hero=document.getElementById('hero'),info=document.getElementById('content'),portrait=document.querySelector('.portrait'),portraitStage=document.querySelector('.portrait-stage'),scrollButton=document.querySelector('.scroll-control');let queued=false;
-function updatePortrait(){const isPhone=phoneQuery.matches,viewportHeight=window.innerHeight,stageWidth=portraitStage.clientWidth,gutter=parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--gutter'))||0,about=document.getElementById('about'),heroMain=document.querySelector('.hero-main'),heroQuote=document.querySelector('.hero-quote'),scrollPadding=parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop)||0,aboutMargin=parseFloat(getComputedStyle(about).scrollMarginTop)||0,scrollRange=isPhone?Math.max(1,about.offsetTop-scrollPadding-aboutMargin):Math.max(hero.offsetHeight,1),progress=Math.max(0,Math.min(1,isPhone?window.scrollY/scrollRange:(window.scrollY-hero.offsetTop+scrollPadding+aboutMargin)/scrollRange)),startHeight=viewportHeight*(isPhone?1.5:2),endHeight=viewportHeight*.9,height=startHeight+(endHeight-startHeight)*progress,left=stageWidth*.5+(stageWidth-gutter-stageWidth*.5)*progress,startTop=isPhone?heroQuote.getBoundingClientRect().bottom+5-startHeight*(282/1936):0,top=startTop*(1-progress)+viewportHeight*.5*progress,translateX=-50-50*progress,translateY=-50*progress;portrait.style.left=left+'px';portrait.style.top=top+'px';portrait.style.width=height*(528/1936)+'px';portrait.style.height=height+'px';portrait.style.transform='translate('+translateX+'%, '+translateY+'%)';}
-function updateScroll(){queued=false;updatePortrait();const boundary=info.getBoundingClientRect().top,past=boundary<=window.innerHeight*.5;document.body.classList.toggle('scrolled',past);scrollButton.textContent=past?'Back to Top':'Scroll';scrollButton.dataset.destination=past?'hero':'content';scrollButton.setAttribute('aria-label',past?'Scroll back to the top':'Scroll to the content');}
-function requestUpdate(){if(!queued){queued=true;requestAnimationFrame(updateScroll);}}
-window.addEventListener('scroll',requestUpdate,{passive:true});window.addEventListener('resize',requestUpdate,{passive:true});updateScroll();
-scrollButton.addEventListener('click',()=>document.getElementById(scrollButton.dataset.destination).scrollIntoView({behavior:motionQuery.matches?'auto':'smooth',block:'start'}));
-/* Menu: blurred full-screen mobile disclosure, staggered links, Escape + focus trap. */
-const toggle=document.querySelector('.menu-toggle'),panel=document.getElementById('mobile-menu');
-function setMenu(open,restoreFocus=true){document.body.classList.toggle('menu-open',open);toggle.setAttribute('aria-expanded',String(open));toggle.textContent=open?'Close':'Menu';panel.setAttribute('aria-hidden',String(!open));panel.inert=!open;if(!open&&restoreFocus)toggle.focus();}
-panel.inert=true;toggle.addEventListener('click',()=>setMenu(toggle.getAttribute('aria-expanded')!=='true'));
-panel.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>setMenu(false,false)));
-document.addEventListener('keydown',event=>{if(!document.body.classList.contains('menu-open'))return;if(event.key==='Escape'){setMenu(false);return;}if(event.key==='Tab'){const controls=[toggle,...panel.querySelectorAll('a,button')];const first=controls[0],last=controls[controls.length-1];if(event.shiftKey&&document.activeElement===first){event.preventDefault();last.focus();}else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first.focus();}}});
-phoneQuery.addEventListener('change',event=>{if(!event.matches)setMenu(false,false);});
-/* Smooth anchors (also usable without JS through native CSS scrolling). */
-document.querySelectorAll('a[href^="#"]').forEach(link=>link.addEventListener('click',event=>{const target=document.getElementById(link.getAttribute('href').slice(1));if(!target)return;event.preventDefault();setMenu(false,false);target.scrollIntoView({behavior:motionQuery.matches?'auto':'smooth'});history.replaceState(null,'',link.getAttribute('href'));}));
-/* Fit each display heading by measuring its longest line. No arbitrary fixed desktop size. */
-function fitDisplay(el){if(phoneQuery.matches&&el.classList.contains('footer-title')){el.style.fontSize='clamp(2rem,12vw,3rem)';return;}if(phoneQuery.matches&&el.classList.contains('hero-title')){el.style.fontSize='2rem';el.style.letterSpacing='.5em';el.style.textAlign='center';return;}const lines=el.querySelectorAll(':scope > span');if(!lines.length||!el.clientWidth)return;const canvas=document.createElement('canvas');const ctx=canvas.getContext('2d');if(!ctx)return;ctx.font='700 100px Switzer, Arial, sans-serif';const widest=Math.max(...Array.from(lines,line=>ctx.measureText(line.textContent).width));if(widest>0)el.style.fontSize=(el.clientWidth/widest*100*.995)+'px';}
-function fitAll(){document.querySelectorAll('[data-fit]').forEach(fitDisplay);}
-if('ResizeObserver'in window){const ro=new ResizeObserver(fitAll);document.querySelectorAll('[data-fit]').forEach(el=>ro.observe(el));}window.addEventListener('resize',fitAll,{passive:true});if(document.fonts){document.fonts.ready.then(fitAll);}fitAll();
-
-/* Page exit fade for same-tab external navigation. Native downloads/mail links are preserved. */
-document.querySelectorAll('a[href]').forEach(link=>link.addEventListener('click',event=>{if(event.defaultPrevented||event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey||link.target==='_blank'||link.hasAttribute('download'))return;const href=link.getAttribute('href');if(!/^https?:/i.test(href)||motionQuery.matches)return;event.preventDefault();document.body.classList.add('page-leaving');setTimeout(()=>{window.location.href=href;},200);}));
-window.addEventListener('pageshow',()=>document.body.classList.remove('page-leaving'));
-/* Stop loops in a background tab; honor a preference change without reloading. */
-document.addEventListener('visibilitychange',()=>document.querySelectorAll('.status-dot').forEach(dot=>dot.style.visibility=document.hidden?'hidden':'visible'));
-motionQuery.addEventListener('change',event=>{if(event.matches){animations.forEach(animation=>animation.finish());targets.forEach(el=>el.classList.add('is-visible'));document.documentElement.classList.remove('js');}});
-})();
-</script>
-</body>
+          <section class="section" id="contact" aria-labelledby="contact-title">
+            <div class="section-inner">
+              <h2 id="contact-title">08. Contact</h2>
+              <div class="section-body contact-list">
+                <div class="contact-item reveal">
+                  <p class="muted">Phone</p>
+                  <a class="contact-link" href="tel:+1 519 731 7551">+1 519 731 7551</a>
+                </div>
+                <div class="contact-item reveal">
+                  <p class="muted">Email</p>
+                  <a class="contact-link" href="mailto:Pra987amb@Yahoo.com">Pra987amb@Yahoo.com</a>
+                </div>
+                <div class="contact-item reveal">
+                  <p class="muted">Site</p>
+                  <a class="contact-link" href="https://anderson.dev">anderson.dev</a>
+                </div>
+                <div class="contact-item reveal">
+                  <p class="muted">Socials</p>
+                  <div class="social-links">
+                    <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Instagram"
+                      ><svg viewBox="0 0 24 24" aria-hidden="true">
+                        <rect
+                          x="3.5"
+                          y="3.5"
+                          width="17"
+                          height="17"
+                          rx="5"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.8"
+                        />
+                        <circle
+                          cx="12"
+                          cy="12"
+                          r="4"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="1.8"
+                        />
+                        <circle cx="17.6" cy="6.7" r="1.1" /></svg></a
+                    ><a
+                      href="https://www.linkedin.com/in/pratik-ambaliya-a89459146/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="LinkedIn"
+                      ><svg viewBox="0 0 24 24" aria-hidden="true">
+                        <circle cx="6.2" cy="6.6" r="1.6" />
+                        <path
+                          d="M4.9 9.2h2.7v9.9H4.9zm4.5 0H12v1.4c.6-1 1.6-1.7 3.1-1.7 3 0 3.9 1.9 3.9 4.7v5.5h-2.7v-4.9c0-1.5 0-2.8-1.8-2.8s-2.1 1.3-2.1 2.7v5H9.4z"
+                        /></svg></a
+                    ><a href="#" target="_blank" rel="noopener noreferrer" aria-label="X"
+                      ><svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path
+                          d="M18.9 3h2.9l-6.4 7.3L23 21h-6l-4.7-6.2L6.9 21H4l6.9-7.9L3.5 3h6.2l4.2 5.7zm-1 16h1.6L8.6 4.9H6.9z"
+                        /></svg
+                    ></a>
+                  </div>
+                </div>
+                <div class="visitor-message">
+                  <p class="muted">Dear visitor,</p>
+                  <p class="muted">
+                    Hey there! Thank you so much for taking a moment to explore my space. Whether
+                    you have a question, a project in mind, or just want to chat, my inbox is always
+                    open. Don't be a stranger reach out anytime!
+                  </p>
+                  <p class="muted">Sincerely,</p>
+                  <!-- SignatureWhit.svg artwork stays in its native 2048 by 2048 coordinate system. The existing SVG mask continues to reveal it automatically when it reaches the viewport center. -->
+                  <div class="signature-group">
+                    <div class="signature-art" id="sig">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="190 560 1740 930"
+                        preserveAspectRatio="xMidYMid meet"
+                        role="img"
+                        aria-labelledby="signature-title"
+                      >
+                        <title id="signature-title">
+                          Handwritten signature for Pratik Ambaliya
+                        </title>
+                        <defs>
+                          <linearGradient id="sweepGrad" x1="0" y1="0" x2="1" y2="0">
+                            <stop offset="0.00" stop-color="#fff" stop-opacity="1" />
+                            <stop offset="0.80" stop-color="#fff" stop-opacity="1" />
+                            <stop offset="1.00" stop-color="#fff" stop-opacity="0" />
+                          </linearGradient>
+                          <mask
+                            id="writeMask"
+                            maskUnits="userSpaceOnUse"
+                            x="190"
+                            y="560"
+                            width="1740"
+                            height="930"
+                          >
+                            <rect
+                              id="inkRect"
+                              x="190"
+                              y="560"
+                              width="0"
+                              height="930"
+                              fill="url(#sweepGrad)"
+                            />
+                          </mask>
+                        </defs>
+                        <g mask="url(#writeMask)">
+                          <image
+                            href="public/assets/images/SignatureWhit.svg"
+                            x="0"
+                            y="0"
+                            width="2048"
+                            height="2048"
+                            preserveAspectRatio="xMidYMid meet"
+                          />
+                        </g>
+                        <circle id="penDot" cx="190" cy="1030" r="7" fill="#0b1a2b" opacity="0" />
+                      </svg>
+                    </div>
+                    <p class="signature-name">Pratik Ambaliya</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </main>
+      <footer class="site-footer">
+        <p class="footer-title reveal rise-reveal" data-fit aria-label="Thanks for being here">
+          <span>Thanks</span><span>for being</span><span>here</span>
+        </p>
+      </footer>
+    </div>
+    <script src="src/js/main.js" defer></script>
+  </body>
 </html>
